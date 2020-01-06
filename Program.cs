@@ -10,6 +10,23 @@ namespace OOPFirst
     {
         static void Main(string[] args)
         {
+            char[,] map;
+
+            Map newMap = new Map();
+            map = newMap.MapReader();
+
+            Point pers = new Point(2, 5, '*');
+
+            while (true)
+            {
+                newMap.MapWriter(map);
+                pers.Drow();
+
+                ConsoleKey act = Console.ReadKey().Key;
+                pers.Action(act);
+
+                Console.Clear();
+            }
         }
     }
 }
