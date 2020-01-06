@@ -14,13 +14,19 @@ namespace OOPFirst
 
             Map newMap = new Map();
             map = newMap.MapReader();
-            newMap.MapWriter(map);
 
             Point pers = new Point(2, 5, '*');
-            pers.Drow();
 
+            while (true)
+            {
+                newMap.MapWriter(map);
+                pers.Drow();
 
-            Console.ReadLine();
+                ConsoleKey act = Console.ReadKey().Key;
+                pers.Action(act);
+
+                Console.Clear();
+            }
         }
     }
 }
