@@ -17,9 +17,9 @@ namespace OOPFirst
             Map newMap = new Map();
             map = newMap.MapReader();
 
-            Character pers = new Character("Hodr", 9, 5, 10, '*');
+            Character pers = new Character("Hodr", 6, 5, 10, '*');
 
-            while (true)
+            while (pers.Alive())
             {
                 newMap.MapWriter(map);
                 pers.Draw();
@@ -32,6 +32,9 @@ namespace OOPFirst
 
                 Console.Clear();
             }
+            pers.Info();
+            Console.WriteLine("Вы проиграли");
+            Console.ReadKey();
         }
     }
 }

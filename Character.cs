@@ -88,5 +88,17 @@ namespace OOPFirst
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
         }
+
+        public bool Alive()
+        {
+            if (health != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
