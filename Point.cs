@@ -30,8 +30,8 @@ namespace OOPFirst
             if (key == ConsoleKey.W)
             {
                 if (y != 1)
-                { 
-                    y -= 1; 
+                {
+                    y -= 1;
                 }
             }
             else if (key == ConsoleKey.S)

@@ -15,7 +15,7 @@ namespace OOPFirst
             Map newMap = new Map();
             map = newMap.MapReader();
 
-            Point pers = new Point(2, 5, '*');
+            Character pers = new Character(10, 5, '*');
 
             while (true)
             {
