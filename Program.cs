@@ -10,17 +10,22 @@ namespace OOPFirst
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
+
             char[,] map;
 
             Map newMap = new Map();
             map = newMap.MapReader();
 
-            Character pers = new Character(10, 5, '*');
+            Character pers = new Character("Hodr", 9, 5, 10, '*');
 
             while (true)
             {
                 newMap.MapWriter(map);
-                pers.Drow();
+                pers.Draw();
+
+                Console.SetCursorPosition(0, 21);
+                pers.Info();
 
                 ConsoleKey act = Console.ReadKey().Key;
                 pers.Action(act);
