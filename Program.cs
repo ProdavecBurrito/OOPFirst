@@ -10,23 +10,31 @@ namespace OOPFirst
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
+
             char[,] map;
 
             Map newMap = new Map();
             map = newMap.MapReader();
 
-            Point pers = new Point(2, 5, '*');
+            Character pers = new Character("Hodr", 6, 5, 10, '*');
 
-            while (true)
+            while (pers.Alive())
             {
                 newMap.MapWriter(map);
-                pers.Drow();
+                pers.Draw();
+
+                Console.SetCursorPosition(0, 21);
+                pers.Info();
 
                 ConsoleKey act = Console.ReadKey().Key;
                 pers.Action(act);
 
                 Console.Clear();
             }
+            pers.Info();
+            Console.WriteLine("Вы проиграли");
+            Console.ReadKey();
         }
     }
 }
