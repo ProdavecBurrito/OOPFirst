@@ -11,6 +11,7 @@ namespace OOPFirst
         string name;
         int health;
         char saveSym;
+        Map map = new Map();
 
         public Character(string _name, int _health, int _x, int _y, char _sym) : base(_x, _y, _sym)
         {
@@ -56,13 +57,13 @@ namespace OOPFirst
                     }
                     break;
                 case ConsoleKey.S:
-                    if (y != 20 - 2)
+                    if (y != map.MapHight - 2)
                     {
                         y += 1;
                     }
                     break;
                 case ConsoleKey.D:
-                    if (x != 50 - 2)
+                    if (x != map.MapWidth - 2)
                     {
                         x += 1;
                     }
