@@ -10,9 +10,6 @@ namespace OOPFirst
     {
         string name;
         int health;
-        int x;
-        int y;
-        char sym;
 
         public Character(string _name, int _health, int _x, int _y, char _sym) : base(_x, _y, _sym)
         {
@@ -81,12 +78,6 @@ namespace OOPFirst
                     Dmg();
                     break;
             }
-        }
-
-        public new void Draw()
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
         }
 
         public bool Alive()
