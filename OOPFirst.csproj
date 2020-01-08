@@ -46,7 +46,6 @@
     <Compile Include="Barrier.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Map.cs" />
-    <Compile Include="Object.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

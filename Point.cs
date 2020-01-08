@@ -8,9 +8,9 @@ namespace OOPFirst
 {
     class Point
     {
-        int x;
-        int y;
-        char sym;
+        protected int x;
+        protected int y;
+        protected char sym;
 
         protected Point(int _x, int _y, char _sym)
         {
@@ -19,7 +19,7 @@ namespace OOPFirst
             sym = _sym;
         }
 
-        protected void Draw()
+        public void Draw()
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);

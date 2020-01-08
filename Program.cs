@@ -16,21 +16,22 @@ namespace OOPFirst
 
             Map newMap = new Map();
             map = newMap.MapReader();
+            newMap.MapWriter(map);
 
             Character pers = new Character("Hodr", 6, 5, 10, '*');
 
             while (pers.Alive())
             {
-                newMap.MapWriter(map);
                 pers.Draw();
 
                 Console.SetCursorPosition(0, 21);
                 pers.Info();
 
                 ConsoleKey act = Console.ReadKey().Key;
+                pers.Clear();
                 pers.Action(act);
+                pers.ReturnSym();
 
-                Console.Clear();
             }
             pers.Info();
             Console.WriteLine("Вы проиграли");

@@ -10,6 +10,7 @@ namespace OOPFirst
     {
         string name;
         int health;
+        char saveSym;
 
         public Character(string _name, int _health, int _x, int _y, char _sym) : base(_x, _y, _sym)
         {
@@ -18,6 +19,7 @@ namespace OOPFirst
             x = _x;
             y = _y;
             sym = _sym;
+            saveSym = _sym;
         }
 
         public void Heal()
@@ -39,7 +41,7 @@ namespace OOPFirst
         public void Info()
         {
             Console.WriteLine($"Персонаж {name}");
-            Console.WriteLine($"Координаты {x}x{y}");
+            Console.WriteLine($"Координаты {x}х{y}");
             Console.WriteLine($"Колл-во жизней {health}");
         }
 
@@ -90,6 +92,18 @@ namespace OOPFirst
             {
                 return false;
             }
+        }
+
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
+        }
+
+        public void ReturnSym()
+        {
+            sym = saveSym;
+            Draw();
         }
     }
 }
