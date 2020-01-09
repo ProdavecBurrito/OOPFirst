@@ -18,11 +18,15 @@ namespace OOPFirst
             map = newMap.MapReader();
             newMap.MapWriter(map);
 
+            HorizontalBarrier horizontalBarrier = new HorizontalBarrier(6, 4, 3, '&');
+
             Character pers = new Character("Hodr", 6, 5, 10, '*');
 
             while (pers.Alive())
             {
                 pers.Draw();
+
+                horizontalBarrier.LineDraw();
 
                 Console.SetCursorPosition(0, 21);
                 pers.Info();
