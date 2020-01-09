@@ -9,6 +9,9 @@ namespace OOPFirst
     class Character : Point
     {
         string name;
+        string writeName;
+        string writeCoord;
+        string writeHealth;
         int health;
         char saveSym;
         Map map = new Map();
@@ -41,10 +44,43 @@ namespace OOPFirst
 
         public void Info()
         {
-            Console.WriteLine($"Персонаж {name}");
-            Console.WriteLine($"Координаты {x}х{y}");
-            Console.WriteLine($"Колл-во жизней {health}");
+            writeName = ($"Персонаж {name}");
+            Console.WriteLine(writeName);
+
+            writeCoord = ($"Координаты {x}х{y}");
+            Console.WriteLine(writeCoord);
+
+            writeHealth = ($"Колл-во жизней {health}");
+            Console.WriteLine(writeHealth);
         }
+
+        public void ClearInfo()
+        {
+            char [] empty = new char[writeName.Length];
+            for (int i = 0; i < writeName.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
+
+            empty = new char[writeCoord.Length];
+            for (int i = 0; i < writeCoord.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
+
+            empty = new char[writeHealth.Length];
+            for (int i = 0; i < writeHealth.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
+        }
+
 
         public void Action(ConsoleKey key)
         {

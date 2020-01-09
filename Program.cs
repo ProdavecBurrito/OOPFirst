@@ -28,11 +28,16 @@ namespace OOPFirst
                 pers.Info();
 
                 ConsoleKey act = Console.ReadKey().Key;
+
+                Console.SetCursorPosition(0, 21);
+                pers.ClearInfo();
+
                 pers.Clear();
                 pers.Action(act);
                 pers.ReturnSym();
 
             }
+            Console.Clear();
             pers.Info();
             Console.WriteLine("Вы проиграли");
             Console.ReadKey();
