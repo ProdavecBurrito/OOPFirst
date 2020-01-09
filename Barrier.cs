@@ -10,9 +10,6 @@ namespace OOPFirst
     {
         protected Barrier(int _x, int _y, char _sym) : base(_x, _y, _sym)
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
         }
     }
 }
