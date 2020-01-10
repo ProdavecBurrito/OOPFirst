@@ -12,7 +12,7 @@ namespace OOPFirst
         public int y;
         protected char sym;
 
-        protected Point(int _x, int _y, char _sym)
+        public Point(int _x, int _y, char _sym)
         {
             x = _x;
             y = _y;
