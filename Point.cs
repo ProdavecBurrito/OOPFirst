@@ -8,9 +8,9 @@ namespace OOPFirst
 {
     class Point
     {
-        protected int x;
+        public int x;
         public int y;
-        protected char sym;
+        public char sym;
 
         public Point(int _x, int _y, char _sym)
         {

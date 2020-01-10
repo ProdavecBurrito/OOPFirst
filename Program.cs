@@ -20,7 +20,8 @@ namespace OOPFirst
 
             HorizontalBarrier horizontalBarrier = new HorizontalBarrier(6, 4, 3, '&');
 
-            Character pers = new Character("Hodr", 6, 5, 10, '*');
+            Point point = new Point(4, 8, '*');
+            Character pers = new Character(point);
 
             while (pers.Alive())
             {
