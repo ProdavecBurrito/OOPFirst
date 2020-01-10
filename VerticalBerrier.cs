@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class HorizontalBarrier : Object
+    class VerticalBerrier : Object
     {
-        public HorizontalBarrier(int startLineX, int lineLength, int y, char sym)
+        public VerticalBerrier(int startLineY, int lineLength, int x, char sym)
         {
             pList = new List<Point>(lineLength);
-            for (int x = startLineX; x < lineLength + startLineX; x++)
+            for (int y = startLineY; y < lineLength + startLineY; y++)
             {
                 Point point = new Point(x, y, sym);
                 pList.Add(point);

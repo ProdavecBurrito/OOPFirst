@@ -8,8 +8,8 @@ namespace OOPFirst
 {
     class Character
     {
-        int x;
-        int y;
+        public int x;
+        public int y;
         char sym;
         string name;
         string writeName;
