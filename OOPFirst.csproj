@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Barrier.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="HealingElixir.cs" />
     <Compile Include="HorizontalBarrier.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Object.cs" />
