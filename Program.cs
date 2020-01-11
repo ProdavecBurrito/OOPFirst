@@ -21,19 +21,29 @@ namespace OOPFirst
             HorizontalBarrier horizontalBarrier = new HorizontalBarrier(6, 4, 3, '&');
             VerticalBerrier verticalBerrier = new VerticalBerrier(6, 8, 6, '&');
 
+            Barrier fBarrier = new Barrier(17, 16, '&');
+            Barrier sBarrier = new Barrier(40, 10, '&');
+            Barrier tBarrier = new Barrier(35, 4, '&');
+            Barrier foBarrier = new Barrier(25, 18, '&');
+            Barrier fiBarrier = new Barrier(15, 9, '&');
+
             Point p = new Point(4, 8, '*');
             Character pers = new Character(p);
             pers.SetHealth(8);
             pers.SetName("Hodr");
 
-            horizontalBarrier.LineDraw();
-            verticalBerrier.LineDraw();
-
             while (pers.Alive())
             {
                 pers.Draw();
+
                 horizontalBarrier.LineDraw();
                 verticalBerrier.LineDraw();
+
+                sBarrier.Draw();
+                fBarrier.Draw();
+                tBarrier.Draw();
+                foBarrier.Draw();
+                fiBarrier.Draw();
 
                 pers.SaveLastPosition();
 
@@ -46,13 +56,19 @@ namespace OOPFirst
                 pers.ClearInfo();
 
                 pers.Clear();
+
                 pers.Action(act);
+
                 pers.ReturnSym();
 
-                if (horizontalBarrier.Hit(pers) || verticalBerrier.Hit(pers))
-                {
-                    pers.ReturnLastPosition();
-                }
+                horizontalBarrier.Hit(pers);
+                verticalBerrier.Hit(pers);
+                fBarrier.HitB(pers);
+                sBarrier.HitB(pers);
+                tBarrier.HitB(pers);
+                foBarrier.HitB(pers);
+                fiBarrier.HitB(pers);
+
                 pers.SaveLastPosition();
             }
             Console.Clear();
