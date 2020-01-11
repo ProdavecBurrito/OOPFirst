@@ -21,8 +21,20 @@ namespace OOPFirst
                 if (character.x == pList[i].x && character.y == pList[i].y)
                 {
                     character.Dmg();
+                    character.ReturnLastPosition();
                     return true;
                 }
+            }
+            return false;
+        }
+
+        public bool HitB(Character character)
+        {
+            if (character.x == x && character.y == y)
+            {
+                character.Dmg();
+                character.ReturnLastPosition();
+                return true;
             }
             return false;
         }
