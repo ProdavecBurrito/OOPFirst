@@ -19,14 +19,23 @@ namespace OOPFirst
             newMap.MapWriter(map);
 
             HorizontalBarrier horizontalBarrier = new HorizontalBarrier(6, 4, 3, '&');
+            VerticalBerrier verticalBerrier = new VerticalBerrier(6, 8, 6, '&');
 
-            Character pers = new Character("Hodr", 6, 5, 10, '*');
+            Point p = new Point(4, 8, '*');
+            Character pers = new Character(p);
+            pers.SetHealth(8);
+            pers.SetName("Hodr");
+
+            horizontalBarrier.LineDraw();
+            verticalBerrier.LineDraw();
 
             while (pers.Alive())
             {
                 pers.Draw();
-
                 horizontalBarrier.LineDraw();
+                verticalBerrier.LineDraw();
+
+                pers.SaveLastPosition();
 
                 Console.SetCursorPosition(0, 21);
                 pers.Info();
@@ -40,6 +49,11 @@ namespace OOPFirst
                 pers.Action(act);
                 pers.ReturnSym();
 
+                if (horizontalBarrier.Hit(pers) || verticalBerrier.Hit(pers))
+                {
+                    pers.ReturnLastPosition();
+                }
+                pers.SaveLastPosition();
             }
             Console.Clear();
             pers.Info();

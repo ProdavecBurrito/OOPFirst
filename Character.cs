@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class Character : Point
+    class Character : Object
     {
+        int saveX;
+        int saveY;
         string name;
         string writeName;
         string writeCoord;
@@ -16,14 +18,12 @@ namespace OOPFirst
         char saveSym;
         Map map = new Map();
 
-        public Character(string _name, int _health, int _x, int _y, char _sym) : base(_x, _y, _sym)
+        public Character(Point p)
         {
-            name = _name;
-            health = _health;
-            x = _x;
-            y = _y;
-            sym = _sym;
-            saveSym = _sym;
+            x = p.x;
+            y = p.y;
+            sym = p.sym;
+            saveSym = p.sym;
         }
 
         public void Heal()
@@ -141,6 +141,29 @@ namespace OOPFirst
         {
             sym = saveSym;
             Draw();
+        }
+
+
+        public void SetName(string _name)
+        {
+            name = _name;
+        }
+
+        public void SetHealth(int _health)
+        {
+            health = _health;
+        }
+
+        public void SaveLastPosition()
+        {
+            saveX = this.x;
+            saveY = this.y;
+        }
+
+        public void ReturnLastPosition()
+        {
+            this.x = saveX;
+            this.y = saveY;
         }
     }
 }
