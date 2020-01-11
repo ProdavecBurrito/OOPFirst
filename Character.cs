@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class Character
+    class Character : Object
     {
-        public int x;
-        public int y;
-        char sym;
+        int saveX;
+        int saveY;
         string name;
         string writeName;
         string writeCoord;
@@ -144,11 +143,6 @@ namespace OOPFirst
             Draw();
         }
 
-        public void Draw()
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
-        }
 
         public void SetName(string _name)
         {
@@ -158,6 +152,18 @@ namespace OOPFirst
         public void SetHealth(int _health)
         {
             health = _health;
+        }
+
+        public void SaveLastPosition()
+        {
+            saveX = this.x;
+            saveY = this.y;
+        }
+
+        public void ReturnLastPosition()
+        {
+            this.x = saveX;
+            this.y = saveY;
         }
     }
 }

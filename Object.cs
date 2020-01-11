@@ -8,6 +8,10 @@ namespace OOPFirst
 {
     class Object 
     {
+        protected int x;
+        protected int y;
+        protected char sym;
+            
         protected List<Point> pList;
 
         public bool Hit(Character character)
@@ -19,11 +23,8 @@ namespace OOPFirst
                     character.Dmg();
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
             }
+            return false;
         }
 
         public void LineDraw()
@@ -32,6 +33,12 @@ namespace OOPFirst
             {
                 i.Draw();
             }
+        }
+
+        public void Draw()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(sym);
         }
     }
 }
