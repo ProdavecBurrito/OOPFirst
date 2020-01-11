@@ -17,10 +17,9 @@ namespace OOPFirst
             sym = _sym;
         }
 
-        public bool Grab(Character character)
+        public bool GrabBy(Character character)
         {
             if (character.x == x && character.y == y)
-
             {
                 if (ElixirActiv())
                 {
