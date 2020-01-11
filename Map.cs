@@ -15,7 +15,7 @@ namespace OOPFirst
 
         public char[,] MapReader()
         {
-            using (var readMap = new StreamReader(@"../../../Map.txt"))
+            using (var readMap = new StreamReader(@"C:\Users\shipo\source\repos\OOPFirst\OOPFirst\Map.txt"))
             {
                 int i = 0;
                 map = new char[MapHight, MapWidth];

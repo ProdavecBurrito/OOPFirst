@@ -6,18 +6,24 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class Character : Point
+    class Character : Object
     {
+        int saveX;
+        int saveY;
         string name;
+        string writeName;
+        string writeCoord;
+        string writeHealth;
         int health;
+        char saveSym;
+        Map map = new Map();
 
-        public Character(string _name, int _health, int _x, int _y, char _sym) : base(_x, _y, _sym)
+        public Character(Point p)
         {
-            name = _name;
-            health = _health;
-            x = _x;
-            y = _y;
-            sym = _sym;
+            x = p.x;
+            y = p.y;
+            sym = p.sym;
+            saveSym = p.sym;
         }
 
         public void Heal()
@@ -38,10 +44,43 @@ namespace OOPFirst
 
         public void Info()
         {
-            Console.WriteLine($"Персонаж {name}");
-            Console.WriteLine($"Координаты {x}x{y}");
-            Console.WriteLine($"Колл-во жизней {health}");
+            writeName = ($"Персонаж {name}");
+            Console.WriteLine(writeName);
+
+            writeCoord = ($"Координаты {x}х{y}");
+            Console.WriteLine(writeCoord);
+
+            writeHealth = ($"Колл-во жизней {health}");
+            Console.WriteLine(writeHealth);
         }
+
+        public void ClearInfo()
+        {
+            char [] empty = new char[writeName.Length];
+            for (int i = 0; i < writeName.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
+
+            empty = new char[writeCoord.Length];
+            for (int i = 0; i < writeCoord.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
+
+            empty = new char[writeHealth.Length];
+            for (int i = 0; i < writeHealth.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
+        }
+
 
         public void Action(ConsoleKey key)
         {
@@ -54,13 +93,13 @@ namespace OOPFirst
                     }
                     break;
                 case ConsoleKey.S:
-                    if (y != 20 - 2)
+                    if (y != map.MapHight - 2)
                     {
                         y += 1;
                     }
                     break;
                 case ConsoleKey.D:
-                    if (x != 50 - 2)
+                    if (x != map.MapWidth - 2)
                     {
                         x += 1;
                     }
@@ -90,6 +129,41 @@ namespace OOPFirst
             {
                 return false;
             }
+        }
+
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
+        }
+
+        public void ReturnSym()
+        {
+            sym = saveSym;
+            Draw();
+        }
+
+
+        public void SetName(string _name)
+        {
+            name = _name;
+        }
+
+        public void SetHealth(int _health)
+        {
+            health = _health;
+        }
+
+        public void SaveLastPosition()
+        {
+            saveX = this.x;
+            saveY = this.y;
+        }
+
+        public void ReturnLastPosition()
+        {
+            this.x = saveX;
+            this.y = saveY;
         }
     }
 }

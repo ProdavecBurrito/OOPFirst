@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class Barrier : Point
+    class Barrier : Object
     {
+        public Barrier()
+        {
+        }
+
 
     }
 }

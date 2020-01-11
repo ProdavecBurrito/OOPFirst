@@ -8,21 +8,15 @@ namespace OOPFirst
 {
     class Point
     {
-        int x;
-        int y;
-        char sym;
+        public int x;
+        public int y;
+        public char sym;
 
-        protected Point(int _x, int _y, char _sym)
+        public Point(int _x, int _y, char _sym)
         {
             x = _x;
             y = _y;
             sym = _sym;
-        }
-
-        protected void Draw()
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
         }
     }
 }
