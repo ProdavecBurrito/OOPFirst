@@ -27,10 +27,16 @@ namespace OOPFirst
             Barrier foBarrier = new Barrier(25, 18, '&');
             Barrier fiBarrier = new Barrier(15, 9, '&');
 
+            HealingElixir fElixir = new HealingElixir(5, 10, '0');
+            HealingElixir sElixir = new HealingElixir(25, 6, '0');
+
             Point p = new Point(4, 8, '*');
             Character pers = new Character(p);
             pers.SetHealth(8);
             pers.SetName("Hodr");
+
+            fElixir.Draw();
+            sElixir.Draw();
 
             while (pers.Alive())
             {
@@ -44,6 +50,7 @@ namespace OOPFirst
                 tBarrier.Draw();
                 foBarrier.Draw();
                 fiBarrier.Draw();
+
 
                 pers.SaveLastPosition();
 
@@ -61,8 +68,12 @@ namespace OOPFirst
 
                 pers.ReturnSym();
 
+                fElixir.Grab(pers);
+                sElixir.Grab(pers);
+
                 horizontalBarrier.Hit(pers);
                 verticalBerrier.Hit(pers);
+
                 fBarrier.HitB(pers);
                 sBarrier.HitB(pers);
                 tBarrier.HitB(pers);

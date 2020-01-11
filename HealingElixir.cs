@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OOPFirst
+{
+    class HealingElixir : Object
+    {
+        public int HealActiv = 0;
+
+        public HealingElixir(int _x, int _y, char _sym)
+        {
+            x = _x;
+            y = _y;
+            sym = _sym;
+        }
+
+        public bool Grab(Character character)
+        {
+            if (character.x == x && character.y == y)
+
+            {
+                if (ElixirActiv())
+                {
+                    character.Heal();
+                    HealActiv = 1;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool ElixirActiv()
+        {
+            if (HealActiv == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}

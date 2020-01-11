@@ -8,9 +8,9 @@ namespace OOPFirst
 {
     class Object 
     {
-        protected int x;
-        protected int y;
-        protected char sym;
+        public int x;
+        public int y;
+        public char sym;
             
         protected List<Point> pList;
 
