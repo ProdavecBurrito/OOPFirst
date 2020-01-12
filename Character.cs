@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class Character : Object
+    class Character
     {
+        public int x;
+        public int y;
+        char sym;
+
         int saveX;
         int saveY;
         string name;
@@ -18,6 +22,7 @@ namespace OOPFirst
         char saveSym;
         Map map = new Map();
 
+
         public Character(Point p)
         {
             x = p.x;
@@ -26,6 +31,9 @@ namespace OOPFirst
             saveSym = p.sym;
         }
 
+        /// <summary>
+        /// Лечит персонажа
+        /// </summary>
         public void Heal()
         {
             if (health != 10)
@@ -34,6 +42,9 @@ namespace OOPFirst
             }
         }
 
+        /// <summary>
+        /// Наносит урон персонажу
+        /// </summary>
         public void Dmg()
         {
             if (health > 0)
@@ -42,6 +53,9 @@ namespace OOPFirst
             }
         }
 
+        /// <summary>
+        /// Выводит информацию о персонаже
+        /// </summary>
         public void Info()
         {
             writeName = ($"Персонаж {name}");
@@ -54,6 +68,9 @@ namespace OOPFirst
             Console.WriteLine(writeHealth);
         }
 
+        /// <summary>
+        /// Чистит информацию о персонаже
+        /// </summary>
         public void ClearInfo()
         {
             char [] empty = new char[writeName.Length];
@@ -81,7 +98,10 @@ namespace OOPFirst
             Console.WriteLine(empty);
         }
 
-
+        /// <summary>
+        /// Считывает клавишу и заставляет перса совершить действия
+        /// </summary>
+        /// <param name="key"></param>
         public void Action(ConsoleKey key)
         {
             switch(key)
@@ -119,6 +139,10 @@ namespace OOPFirst
             }
         }
 
+        /// <summary>
+        /// Проверка перса на то, жив ли он
+        /// </summary>
+        /// <returns></returns>
         public bool Alive()
         {
             if (health != 0)
@@ -131,39 +155,64 @@ namespace OOPFirst
             }
         }
 
+        /// <summary>
+        /// Чистит символ, а затем выводит пробел
+        /// </summary>
         public void Clear()
         {
             sym = ' ';
             Draw();
         }
 
-        public void ReturnSym()
+        /// <summary>
+        /// Выводит символ
+        /// </summary>
+        public void WriteSym()
         {
             sym = saveSym;
             Draw();
         }
 
-
+        /// <summary>
+        /// Задает имя перса
+        /// </summary>
+        /// <param name="_name"></param>
         public void SetName(string _name)
         {
             name = _name;
         }
 
+        /// <summary>
+        /// задает хп перса
+        /// </summary>
+        /// <param name="_health"></param>
         public void SetHealth(int _health)
         {
             health = _health;
         }
 
+        /// <summary>
+        /// Созраняет последнюю безопасную позицию
+        /// </summary>
         public void SaveLastPosition()
         {
             saveX = this.x;
             saveY = this.y;
         }
 
+        /// <summary>
+        /// Перемещает персонажа в последнюю безопасную позицию
+        /// </summary>
         public void ReturnLastPosition()
         {
             this.x = saveX;
             this.y = saveY;
+        }
+
+        public void Draw()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(sym);
         }
     }
 }

@@ -10,13 +10,15 @@ namespace OOPFirst
     {
         public int HealActiv = 0;
 
-        public HealingElixir(int _x, int _y, char _sym)
+        public HealingElixir(int _x, int _y, char _sym) : base (_x,_y,_sym)
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
         }
 
+        /// <summary>
+        /// Проверка на то, подобрал ли перс хилку
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         public bool GrabBy(Character character)
         {
             if (character.x == x && character.y == y)
@@ -31,6 +33,10 @@ namespace OOPFirst
             return false;
         }
 
+        /// <summary>
+        /// Проверка, не подбирал ли перс эту хилку
+        /// </summary>
+        /// <returns></returns>
         public bool ElixirActiv()
         {
             if (HealActiv == 0)
