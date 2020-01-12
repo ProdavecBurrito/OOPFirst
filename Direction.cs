@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class Direction
+    enum Direction
     {
+        DOWN,
+        RIGHT
     }
 }

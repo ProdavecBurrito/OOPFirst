@@ -18,8 +18,8 @@ namespace OOPFirst
             map = newMap.MapReader();
             newMap.MapWriter(map);
 
-            HorizontalBarrier horizontalBarrier = new HorizontalBarrier(6, 4, 3, '&');
-            VerticalBerrier verticalBerrier = new VerticalBerrier(6, 8, 6, '&');
+            Barriers horizontalBarrier = new Barriers(6, 4, 3, '&', Direction.RIGHT);
+            Barriers verticalBarrier = new Barriers(10, 7, 10, '&', Direction.DOWN);
 
             Barrier fBarrier = new Barrier(17, 16, '&');
             Barrier sBarrier = new Barrier(40, 10, '&');
@@ -43,7 +43,7 @@ namespace OOPFirst
                 pers.Draw();
 
                 horizontalBarrier.LineDraw();
-                verticalBerrier.LineDraw();
+                verticalBarrier.LineDraw();
 
                 sBarrier.Draw();
                 fBarrier.Draw();
@@ -72,7 +72,7 @@ namespace OOPFirst
                 sElixir.GrabBy(pers);
 
                 horizontalBarrier.Hit(pers);
-                verticalBerrier.Hit(pers);
+                verticalBarrier.Hit(pers);
 
                 fBarrier.HitB(pers);
                 sBarrier.HitB(pers);
