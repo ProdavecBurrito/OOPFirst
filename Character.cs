@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class Character : Object
+    class Character
     {
+        public int x;
+        public int y;
+        char sym;
+
         int saveX;
         int saveY;
         string name;
@@ -164,6 +168,12 @@ namespace OOPFirst
         {
             this.x = saveX;
             this.y = saveY;
+        }
+
+        public void Draw()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(sym);
         }
     }
 }
