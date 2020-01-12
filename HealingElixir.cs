@@ -25,7 +25,7 @@ namespace OOPFirst
             {
                 if (ElixirActiv())
                 {
-                    character.Heal();
+                    character.healingElixirs += 1;
                     HealActiv = 1;
                     return true;
                 }

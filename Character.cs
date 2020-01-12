@@ -12,12 +12,16 @@ namespace OOPFirst
         public int y;
         char sym;
 
+        public int healingElixirs = 0;
+
         int saveX;
         int saveY;
         string name;
+
         string writeName;
         string writeCoord;
         string writeHealth;
+        string writeHealingEl;
         int health;
         char saveSym;
         Map map = new Map();
@@ -66,6 +70,9 @@ namespace OOPFirst
 
             writeHealth = ($"Колл-во жизней {health}");
             Console.WriteLine(writeHealth);
+
+            writeHealingEl = ($"Колл-во хилок {healingElixirs}");
+            Console.WriteLine(writeHealingEl);
         }
 
         /// <summary>
@@ -91,6 +98,14 @@ namespace OOPFirst
 
             empty = new char[writeHealth.Length];
             for (int i = 0; i < writeHealth.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
+
+            empty = new char[writeHealingEl.Length];
+            for (int i = 0; i < writeHealingEl.Length - 1; i++)
             {
                 empty[i] = ' ';
             }
@@ -131,7 +146,19 @@ namespace OOPFirst
                     }
                     break;
                 case ConsoleKey.Backspace:
-                    Heal();
+                    if (healingElixirs != 0)
+                    {
+                        healingElixirs -= 1;
+                        Heal();
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(0, 21);
+                        Console.WriteLine("У вас нет хилок");
+                        Console.ReadKey();
+                        Console.SetCursorPosition(0, 21);
+                        Console.WriteLine("               ");
+                    }
                     break;
                 case ConsoleKey.Enter:
                     Dmg();
