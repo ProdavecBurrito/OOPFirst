@@ -43,6 +43,11 @@ namespace OOPFirst
             }
         }
 
+        /// <summary>
+        /// Проверка, не наступил ли перс на припятствие
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         public bool Hit(Character character)
         {
             for (int i = 0; i < pList.Count; i++)
@@ -57,6 +62,11 @@ namespace OOPFirst
             return false;
         }
 
+        /// <summary>
+        /// Проверка, не наступил ли перс на припятствие
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         public bool HitB(Character character)
         {
             if (character.x == x && character.y == y)

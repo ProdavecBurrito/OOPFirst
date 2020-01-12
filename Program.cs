@@ -66,7 +66,7 @@ namespace OOPFirst
 
                 pers.Action(act);
 
-                pers.ReturnSym();
+                pers.WriteSym();
 
                 fElixir.GrabBy(pers);
                 sElixir.GrabBy(pers);

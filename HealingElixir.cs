@@ -14,6 +14,11 @@ namespace OOPFirst
         {
         }
 
+        /// <summary>
+        /// Проверка на то, подобрал ли перс хилку
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         public bool GrabBy(Character character)
         {
             if (character.x == x && character.y == y)
@@ -28,6 +33,10 @@ namespace OOPFirst
             return false;
         }
 
+        /// <summary>
+        /// Проверка, не подбирал ли перс эту хилку
+        /// </summary>
+        /// <returns></returns>
         public bool ElixirActiv()
         {
             if (HealActiv == 0)
