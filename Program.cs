@@ -85,6 +85,7 @@ namespace OOPFirst
             Console.Clear();
             pers.Info();
             Console.WriteLine("Вы проиграли");
+            Console.WriteLine();
             Console.ReadKey();
         }
     }

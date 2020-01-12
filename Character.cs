@@ -26,6 +26,8 @@ namespace OOPFirst
         char saveSym;
         Map map = new Map();
 
+        int actinosCounter;
+
 
         public Character(Point p)
         {
@@ -119,6 +121,7 @@ namespace OOPFirst
         /// <param name="key"></param>
         public void Action(ConsoleKey key)
         {
+            actinosCounter += 1;
             switch(key)
             {
                 case ConsoleKey.W:
