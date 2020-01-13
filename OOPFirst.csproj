@@ -49,6 +49,7 @@
     <Compile Include="Direction.cs" />
     <Compile Include="HealingElixir.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Mines.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />

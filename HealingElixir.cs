@@ -8,7 +8,7 @@ namespace OOPFirst
 {
     class HealingElixir : Object
     {
-        public int HealActiv = 0;
+        public int healActiv = 0;
 
         public HealingElixir(int _x, int _y, char _sym) : base (_x,_y,_sym)
         {
@@ -26,7 +26,7 @@ namespace OOPFirst
                 if (ElixirActiv())
                 {
                     character.healingElixirs += 1;
-                    HealActiv = 1;
+                    healActiv = 1;
                     return true;
                 }
             }
@@ -39,7 +39,7 @@ namespace OOPFirst
         /// <returns></returns>
         public bool ElixirActiv()
         {
-            if (HealActiv == 0)
+            if (healActiv == 0)
             {
                 return true;
             }

@@ -27,6 +27,8 @@ namespace OOPFirst
             Barrier foBarrier = new Barrier(25, 18, '&');
             Barrier fiBarrier = new Barrier(15, 9, '&');
 
+            Mines mines = new Mines(10);
+
             HealingElixir fElixir = new HealingElixir(5, 10, 'N');
             HealingElixir sElixir = new HealingElixir(25, 6, 'N');
 
@@ -55,6 +57,8 @@ namespace OOPFirst
                 foBarrier.Draw();
                 fiBarrier.Draw();
 
+                mines.DrawMines();
+
                 winningPoint.Draw();
 
                 pers.SaveLastPosition();
@@ -76,14 +80,16 @@ namespace OOPFirst
                 fElixir.GrabBy(pers);
                 sElixir.GrabBy(pers);
 
-                horizontalBarrier.Hit(pers);
-                verticalBarrier.Hit(pers);
+                mines.StepBy(pers);
 
-                fBarrier.HitB(pers);
-                sBarrier.HitB(pers);
-                tBarrier.HitB(pers);
-                foBarrier.HitB(pers);
-                fiBarrier.HitB(pers);
+                horizontalBarrier.StepBy(pers);
+                verticalBarrier.StepBy(pers);
+
+                fBarrier.BStepBy(pers);
+                sBarrier.BStepBy(pers);
+                tBarrier.BStepBy(pers);
+                foBarrier.BStepBy(pers);
+                fiBarrier.BStepBy(pers);
 
                 pers.SaveLastPosition();
             }

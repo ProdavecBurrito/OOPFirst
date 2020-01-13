@@ -244,15 +244,21 @@ namespace OOPFirst
             Console.Write(sym);
         }
 
+        /// <summary>
+        /// Выводит победное сообщение
+        /// </summary>
         public void WinningMessege()
         {
             Console.Clear();
-            Console.WriteLine($"Поздравляем! Вы прошли за {actinosCounter} ход(ов)");
+            Console.WriteLine($"Поздравляем, Вы победили! Вы прошли за {actinosCounter} ход(ов)");
             Console.WriteLine();
             Info();
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Выводит сообщение проиграша
+        /// </summary>
         public void LosingMessage()
         {
             Console.Clear();
