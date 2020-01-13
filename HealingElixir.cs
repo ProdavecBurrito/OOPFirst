@@ -26,6 +26,7 @@ namespace OOPFirst
                 if (ElixirActiv())
                 {
                     character.healingElixirs += 1;
+                    character.WriteAdditionalStatus("Вы подобрали хилку");
                     healActiv = 1;
                     return true;
                 }

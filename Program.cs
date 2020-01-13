@@ -67,6 +67,7 @@ namespace OOPFirst
                 pers.Info();
 
                 ConsoleKey act = Console.ReadKey().Key;
+                pers.ClearAdditionalStatus();
 
                 Console.SetCursorPosition(0, 21);
                 pers.ClearInfo();

@@ -81,7 +81,7 @@ namespace OOPFirst
         /// </summary>
         public void ClearInfo()
         {
-            char [] empty = new char[writeName.Length];
+            char[] empty = new char[writeName.Length];
             for (int i = 0; i < writeName.Length - 1; i++)
             {
                 empty[i] = ' ';
@@ -121,30 +121,34 @@ namespace OOPFirst
         public void Action(ConsoleKey key)
         {
             actinosCounter += 1;
-            switch(key)
+            switch (key)
             {
                 case ConsoleKey.W:
                     if (y != 1)
                     {
                         y -= 1;
+                        WriteStatus("Вы пошли вверх");
                     }
                     break;
                 case ConsoleKey.S:
                     if (y != map.MapHight - 2)
                     {
                         y += 1;
+                        WriteStatus("Вы пошли вниз");
                     }
                     break;
                 case ConsoleKey.D:
                     if (x != map.MapWidth - 2)
                     {
                         x += 1;
+                        WriteStatus("Вы пошли направо");
                     }
                     break;
                 case ConsoleKey.A:
                     if (x != 0 + 1)
                     {
                         x -= 1;
+                        WriteStatus("Вы пошли налево");
                     }
                     break;
                 case ConsoleKey.Backspace:
@@ -152,14 +156,11 @@ namespace OOPFirst
                     {
                         healingElixirs -= 1;
                         Heal();
+                        WriteStatus("Вы использовали хилку");
                     }
                     else
                     {
-                        Console.SetCursorPosition(0, 21);
-                        Console.WriteLine("У вас нет хилок");
-                        Console.ReadKey();
-                        Console.SetCursorPosition(0, 21);
-                        Console.WriteLine("               ");
+                        WriteStatus("У вас нет хилки");
                     }
                     break;
                 case ConsoleKey.Enter:
@@ -266,6 +267,48 @@ namespace OOPFirst
             Console.WriteLine();
             Info();
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Чистит статус
+        /// </summary>
+        public void ClearStatus()
+        {
+            Console.SetCursorPosition(52, 1);
+            Console.WriteLine("                             ");
+        }
+
+        /// <summary>
+        /// Чистит дополнительный статус
+        /// </summary>
+        public void ClearAdditionalStatus()
+        {
+            Console.SetCursorPosition(52, 2);
+            Console.WriteLine("                             ");
+        }
+
+        /// <summary>
+        /// Выводит статус
+        /// </summary>
+        /// <param name="status"></param>
+        public void WriteStatus(string status)
+        {
+            Console.SetCursorPosition(52, 1);
+            ClearStatus();
+            Console.SetCursorPosition(52, 1);
+            Console.WriteLine($"{status}");
+        }
+
+        /// <summary>
+        /// Выводит дополнительный статус
+        /// </summary>
+        /// <param name="status"></param>
+        public void WriteAdditionalStatus(string status)
+        {
+            Console.SetCursorPosition(52, 2);
+            ClearAdditionalStatus();
+            Console.SetCursorPosition(52, 2);
+            Console.WriteLine($"{status}");
         }
     }
 }
