@@ -44,14 +44,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Barrier.cs" />
+    <Compile Include="Barriers.cs" />
     <Compile Include="Character.cs" />
-    <Compile Include="HorizontalBarrier.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="HealingElixir.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Mines.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VerticalBerrier.cs" />
+    <Compile Include="WinningPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
