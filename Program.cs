@@ -89,9 +89,11 @@ namespace OOPFirst
             }
             if (winningPoint.ReachBy(pers))
             {
+                pers.WinningMessege();
             }
             else if (pers.Alive() == false)
             {
+                pers.LosingMessage();
             }
         }
     }

@@ -18,15 +18,15 @@ namespace OOPFirst
             sym = p.sym;
         }
 
+        /// <summary>
+        /// Проверка, достиг ли персонаж победной точки
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
         public bool ReachBy(Character character)
         {
             if (character.x == x && character.y == y)
             {
-                Console.Clear();
-                Console.WriteLine($"Поздравляем! Вы прошли за {character.actinosCounter} ход(ов)");
-                Console.WriteLine();
-                character.Info();
-                Console.ReadKey();
                 return true;
             }
             return false;
