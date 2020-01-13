@@ -48,7 +48,7 @@ namespace OOPFirst
         /// </summary>
         /// <param name="character">Имя персонажа</param>
         /// <returns></returns>
-        public bool Hit(Character character)
+        public bool StepBy(Character character)
         {
             for (int i = 0; i < pList.Count; i++)
             {
@@ -63,11 +63,11 @@ namespace OOPFirst
         }
 
         /// <summary>
-        /// Проверка, не наступил ли перс на припятствие
+        /// Проверка, не наступил ли перс на одиночное препятствие
         /// </summary>
         /// <param name="character">Имя персонажа</param>
         /// <returns></returns>
-        public bool HitB(Character character)
+        public bool BStepBy(Character character)
         {
             if (character.x == x && character.y == y)
             {
