@@ -46,7 +46,7 @@ namespace OOPFirst
         /// <summary>
         /// Проверка, не наступил ли перс на припятствие
         /// </summary>
-        /// <param name="character"></param>
+        /// <param name="character">Имя персонажа</param>
         /// <returns></returns>
         public bool Hit(Character character)
         {
@@ -65,7 +65,7 @@ namespace OOPFirst
         /// <summary>
         /// Проверка, не наступил ли перс на припятствие
         /// </summary>
-        /// <param name="character"></param>
+        /// <param name="character">Имя персонажа</param>
         /// <returns></returns>
         public bool HitB(Character character)
         {

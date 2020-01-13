@@ -32,13 +32,17 @@ namespace OOPFirst
 
             Point p = new Point(4, 8, '*');
             Character pers = new Character(p);
+
+            Point winP = new Point(48, 18, '%');
+            WinningPoint winningPoint = new WinningPoint(winP);
+
             pers.SetHealth(8);
             pers.SetName("Hodr");
 
             fElixir.Draw();
             sElixir.Draw();
 
-            while (pers.Alive())
+            while (pers.Alive() && winningPoint.ReachBy(pers) != true)
             {
                 pers.Draw();
 
@@ -51,6 +55,7 @@ namespace OOPFirst
                 foBarrier.Draw();
                 fiBarrier.Draw();
 
+                winningPoint.Draw();
 
                 pers.SaveLastPosition();
 
@@ -82,11 +87,12 @@ namespace OOPFirst
 
                 pers.SaveLastPosition();
             }
-            Console.Clear();
-            pers.Info();
-            Console.WriteLine("Вы проиграли");
-            Console.WriteLine();
-            Console.ReadKey();
+            if (winningPoint.ReachBy(pers))
+            {
+            }
+            else if (pers.Alive() == false)
+            {
+            }
         }
     }
 }

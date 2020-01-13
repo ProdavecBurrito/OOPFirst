@@ -26,8 +26,7 @@ namespace OOPFirst
         char saveSym;
         Map map = new Map();
 
-        int actinosCounter;
-
+        public int actinosCounter;
 
         public Character(Point p)
         {
@@ -116,9 +115,9 @@ namespace OOPFirst
         }
 
         /// <summary>
-        /// Считывает клавишу и заставляет перса совершить действия
+        /// Заставляет перса совершить действия
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Клавиша действия</param>
         public void Action(ConsoleKey key)
         {
             actinosCounter += 1;
@@ -181,6 +180,12 @@ namespace OOPFirst
             }
             else
             {
+                Console.Clear();
+                Console.WriteLine($"Вы погибли. Сделанно {actinosCounter} ход(ов)");
+                Console.WriteLine();
+                Info();
+                Console.WriteLine();
+                Console.ReadKey();
                 return false;
             }
         }
