@@ -72,6 +72,7 @@ namespace OOPFirst
             if (character.x == x && character.y == y)
             {
                 character.Dmg();
+                character.WriteAdditionalStatus("Вы наступили на препятствие");
                 character.ReturnLastPosition();
                 return true;
             }

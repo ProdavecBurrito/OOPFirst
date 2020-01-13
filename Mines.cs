@@ -14,6 +14,7 @@ namespace OOPFirst
         char sym = ' ';
 
         List<Mines> pList;
+
         Random randX = new Random();
         Random randY = new Random();
 
@@ -43,6 +44,11 @@ namespace OOPFirst
             }
         }
 
+        /// <summary>
+        /// Проверка нахождение на мину
+        /// </summary>
+        /// <param name="character">Имя персонажа</param>
+        /// <returns></returns>
         public bool StepBy(Character character)
         {
             for (int i = 0; i < pList.Count; i++)
@@ -52,6 +58,7 @@ namespace OOPFirst
                     if (pList[i].MineActiv())
                     {
                         character.Dmg();
+                        character.WriteAdditionalStatus("Вы наступили на мину");
                         pList[i].mineActiv = 1;
                         pList[i].sym = 'M';
                         return true;
@@ -67,6 +74,10 @@ namespace OOPFirst
             Console.Write(sym);
         }
 
+        /// <summary>
+        /// Проверка, наступал ли персонаж на эту мину
+        /// </summary>
+        /// <returns></returns>
         public bool MineActiv()
         {
             if (mineActiv == 0)
