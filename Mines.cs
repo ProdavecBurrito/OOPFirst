@@ -13,25 +13,31 @@ namespace OOPFirst
         int y;
         char sym = ' ';
 
-        List<Point> pList;
+        List<Mines> pList;
         Random randX = new Random();
         Random randY = new Random();
 
         public Mines (int _number)
         {
-            pList = new List<Point>(_number);
+            pList = new List<Mines>(_number);
             for (int i = 0; i < _number; i++)
             {
                 x = randX.Next(1,48);
                 y = randY.Next(1,18);
-                Point p = new Point(x, y, sym);
-                pList.Add(p);
+                Mines m = new Mines(x, y);
+                pList.Add(m);
             }
+        }
+
+        public Mines(int _x, int _y)
+        {
+            x = _x;
+            y = _y;
         }
 
         public void DrawMines()
         {
-            foreach (Point i in pList)
+            foreach (Mines i in pList)
             {
                 i.Draw();
             }
@@ -43,12 +49,34 @@ namespace OOPFirst
             {
                 if (character.x == pList[i].x && character.y == pList[i].y)
                 {
-                    character.Dmg();
-                    pList[i].sym = 'M';
-                    return true;
+                    if (pList[i].MineActiv())
+                    {
+                        character.Dmg();
+                        pList[i].mineActiv = 1;
+                        pList[i].sym = 'M';
+                        return true;
+                    }
                 }
             }
             return false;
+        }
+
+        public void Draw()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(sym);
+        }
+
+        public bool MineActiv()
+        {
+            if (mineActiv == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
