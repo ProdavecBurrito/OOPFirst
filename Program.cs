@@ -10,6 +10,7 @@ namespace OOPFirst
     {
         static void Main(string[] args)
         {
+            EndingMessages endingMessage = new EndingMessages();
             Console.CursorVisible = false;
 
             char[,] map;
@@ -18,8 +19,8 @@ namespace OOPFirst
             map = newMap.MapReader();
             newMap.MapWriter(map);
 
-            Barriers horizontalBarrier = new Barriers(6, 4, 3, '&', Direction.RIGHT);
-            Barriers verticalBarrier = new Barriers(10, 7, 10, '&', Direction.DOWN);
+            Barrier horizontalBarrier = new Barrier(6, 4, 3, '&', Direction.RIGHT);
+            Barrier verticalBarrier = new Barrier(10, 7, 10, '&', Direction.DOWN);
 
             Barrier fBarrier = new Barrier(17, 16, '&');
             Barrier sBarrier = new Barrier(40, 10, '&');
@@ -96,11 +97,11 @@ namespace OOPFirst
             }
             if (winningPoint.ReachBy(pers))
             {
-                pers.WinningMessege();
+                endingMessage.WinningMessege(pers);
             }
             else if (pers.Alive() == false)
             {
-                pers.LosingMessage();
+                endingMessage.LosingMessage(pers);
             }
         }
     }

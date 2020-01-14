@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class HealingElixir : Object
+    class HealingElixir
     {
         public int healActiv = 0;
 
-        public HealingElixir(int _x, int _y, char _sym) : base (_x,_y,_sym)
+        int x;
+        int y;
+        char sym;
+        public HealingElixir(int _x, int _y, char _sym)
         {
+            x = _x;
+            y = _y;
+            sym = _sym;
         }
 
         /// <summary>
@@ -48,6 +54,11 @@ namespace OOPFirst
             {
                 return false;
             }
+        }
+        public void Draw()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(sym);
         }
     }
 }
