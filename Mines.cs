@@ -11,29 +11,30 @@ namespace OOPFirst
         public int mineActiv = 0;
         int x;
         int y;
-        char sym = ' ';
+        char sym = 'm';
 
         List<Mines> pList;
 
-        Random randX = new Random();
-        Random randY = new Random();
+        Random rand;
 
         public Mines (int _number)
         {
+            rand = new Random();
             pList = new List<Mines>(_number);
             for (int i = 0; i < _number; i++)
             {
-                x = randX.Next(1,48);
-                y = randY.Next(1,18);
-                Mines m = new Mines(x, y);
+                x = rand.Next(1,48);
+                y = rand.Next(1,18);
+                Point p = new Point(x, y);
+                Mines m = new Mines(p);
                 pList.Add(m);
             }
         }
 
-        public Mines(int _x, int _y)
+        public Mines(Point p)
         {
-            x = _x;
-            y = _y;
+            x = p.x;
+            y = p.y;
         }
 
         public void DrawMines()

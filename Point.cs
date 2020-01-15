@@ -19,6 +19,12 @@ namespace OOPFirst
             sym = _sym;
         }
 
+        public Point(int _x, int _y)
+        {
+            x = _x;
+            y = _y;
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);

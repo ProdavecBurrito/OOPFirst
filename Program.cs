@@ -10,25 +10,15 @@ namespace OOPFirst
     {
         static void Main(string[] args)
         {
-            EndingMessages endingMessage = new EndingMessages();
             Console.CursorVisible = false;
 
-            char[,] map;
+            char[,] newMap;
 
-            Map newMap = new Map();
-            map = newMap.MapReader();
-            newMap.MapWriter(map);
+            Map map = new Map();
+            newMap = map.MapReader();
+            map.MapWriter(newMap);
 
-            Barrier horizontalBarrier = new Barrier(6, 4, 3, '&', Direction.RIGHT);
-            Barrier verticalBarrier = new Barrier(10, 7, 10, '&', Direction.DOWN);
-
-            Barrier fBarrier = new Barrier(17, 16, '&');
-            Barrier sBarrier = new Barrier(40, 10, '&');
-            Barrier tBarrier = new Barrier(35, 4, '&');
-            Barrier foBarrier = new Barrier(25, 18, '&');
-            Barrier fiBarrier = new Barrier(15, 9, '&');
-
-            Mines mines = new Mines(10);
+            Mines mines = new Mines(12);
 
             HealingElixir fElixir = new HealingElixir(5, 10, 'N');
             HealingElixir sElixir = new HealingElixir(25, 6, 'N');
@@ -45,20 +35,13 @@ namespace OOPFirst
             fElixir.Draw();
             sElixir.Draw();
 
+            map.DrawBarriers();
+
             while (pers.Alive() && winningPoint.ReachBy(pers) != true)
             {
                 pers.Draw();
 
-                horizontalBarrier.LineDraw();
-                verticalBarrier.LineDraw();
-
-                sBarrier.Draw();
-                fBarrier.Draw();
-                tBarrier.Draw();
-                foBarrier.Draw();
-                fiBarrier.Draw();
-
-                mines.DrawMines();
+                
 
                 winningPoint.Draw();
 
@@ -66,6 +49,8 @@ namespace OOPFirst
 
                 Console.SetCursorPosition(0, 21);
                 pers.Info();
+
+                mines.DrawMines();
 
                 ConsoleKey act = Console.ReadKey().Key;
                 pers.ClearAdditionalStatus();
@@ -82,27 +67,47 @@ namespace OOPFirst
                 fElixir.GrabBy(pers);
                 sElixir.GrabBy(pers);
 
+                map.StepBy(pers);
+
                 mines.StepBy(pers);
-
-                horizontalBarrier.StepBy(pers);
-                verticalBarrier.StepBy(pers);
-
-                fBarrier.BStepBy(pers);
-                sBarrier.BStepBy(pers);
-                tBarrier.BStepBy(pers);
-                foBarrier.BStepBy(pers);
-                fiBarrier.BStepBy(pers);
 
                 pers.SaveLastPosition();
             }
             if (winningPoint.ReachBy(pers))
             {
-                endingMessage.WinningMessege(pers);
+                WinningMessege(pers);
             }
             else if (pers.Alive() == false)
             {
-                endingMessage.LosingMessage(pers);
+                LosingMessage(pers);
             }
+        }
+
+
+        /// <summary>
+        /// Выводится сообщение о победе перса с информацией
+        /// </summary>
+        /// <param name="character">Имя перса</param>
+        static void WinningMessege(Character character)
+        {
+            Console.Clear();
+            Console.WriteLine($"Поздравляем, Вы победили! Вы прошли за {character.actinosCounter} ход(ов)");
+            Console.WriteLine();
+            character.Info();
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Выводится сообщение о гибели перса с информацией
+        /// </summary>
+        /// <param name="character">Имя перса</param>
+        static void LosingMessage(Character character)
+        {
+            Console.Clear();
+            Console.WriteLine($"Вы погибли. Сделанно {character.actinosCounter} ход(ов)");
+            Console.WriteLine();
+            character.Info();
+            Console.ReadKey();
         }
     }
 }
