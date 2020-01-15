@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="EndingMessages.cs" />
     <Compile Include="HealingElixir.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Mines.cs" />

@@ -10,7 +10,6 @@ namespace OOPFirst
     {
         static void Main(string[] args)
         {
-            EndingMessages endingMessage = new EndingMessages();
             Console.CursorVisible = false;
 
             char[,] newMap;
@@ -19,7 +18,7 @@ namespace OOPFirst
             newMap = map.MapReader();
             map.MapWriter(newMap);
 
-            Mines mines = new Mines(10);
+            Mines mines = new Mines(12);
 
             HealingElixir fElixir = new HealingElixir(5, 10, 'N');
             HealingElixir sElixir = new HealingElixir(25, 6, 'N');
@@ -42,7 +41,7 @@ namespace OOPFirst
             {
                 pers.Draw();
 
-                mines.DrawMines();
+                
 
                 winningPoint.Draw();
 
@@ -50,6 +49,8 @@ namespace OOPFirst
 
                 Console.SetCursorPosition(0, 21);
                 pers.Info();
+
+                mines.DrawMines();
 
                 ConsoleKey act = Console.ReadKey().Key;
                 pers.ClearAdditionalStatus();
@@ -74,12 +75,39 @@ namespace OOPFirst
             }
             if (winningPoint.ReachBy(pers))
             {
-                endingMessage.WinningMessege(pers);
+                WinningMessege(pers);
             }
             else if (pers.Alive() == false)
             {
-                endingMessage.LosingMessage(pers);
+                LosingMessage(pers);
             }
+        }
+
+
+        /// <summary>
+        /// Выводится сообщение о победе перса с информацией
+        /// </summary>
+        /// <param name="character">Имя перса</param>
+        static void WinningMessege(Character character)
+        {
+            Console.Clear();
+            Console.WriteLine($"Поздравляем, Вы победили! Вы прошли за {character.actinosCounter} ход(ов)");
+            Console.WriteLine();
+            character.Info();
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Выводится сообщение о гибели перса с информацией
+        /// </summary>
+        /// <param name="character">Имя перса</param>
+        static void LosingMessage(Character character)
+        {
+            Console.Clear();
+            Console.WriteLine($"Вы погибли. Сделанно {character.actinosCounter} ход(ов)");
+            Console.WriteLine();
+            character.Info();
+            Console.ReadKey();
         }
     }
 }
