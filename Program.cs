@@ -13,20 +13,11 @@ namespace OOPFirst
             EndingMessages endingMessage = new EndingMessages();
             Console.CursorVisible = false;
 
-            char[,] map;
+            char[,] newMap;
 
-            Map newMap = new Map();
-            map = newMap.MapReader();
-            newMap.MapWriter(map);
-
-            Barrier horizontalBarrier = new Barrier(6, 4, 3, '&', Direction.RIGHT);
-            Barrier verticalBarrier = new Barrier(10, 7, 10, '&', Direction.DOWN);
-
-            Barrier fBarrier = new Barrier(17, 16, '&');
-            Barrier sBarrier = new Barrier(40, 10, '&');
-            Barrier tBarrier = new Barrier(35, 4, '&');
-            Barrier foBarrier = new Barrier(25, 18, '&');
-            Barrier fiBarrier = new Barrier(15, 9, '&');
+            Map map = new Map();
+            newMap = map.MapReader();
+            map.MapWriter(newMap);
 
             Mines mines = new Mines(10);
 
@@ -45,18 +36,11 @@ namespace OOPFirst
             fElixir.Draw();
             sElixir.Draw();
 
+            map.DrawBarriers();
+
             while (pers.Alive() && winningPoint.ReachBy(pers) != true)
             {
                 pers.Draw();
-
-                horizontalBarrier.LineDraw();
-                verticalBarrier.LineDraw();
-
-                sBarrier.Draw();
-                fBarrier.Draw();
-                tBarrier.Draw();
-                foBarrier.Draw();
-                fiBarrier.Draw();
 
                 mines.DrawMines();
 
@@ -82,16 +66,9 @@ namespace OOPFirst
                 fElixir.GrabBy(pers);
                 sElixir.GrabBy(pers);
 
+                map.StepBy(pers);
+
                 mines.StepBy(pers);
-
-                horizontalBarrier.StepBy(pers);
-                verticalBarrier.StepBy(pers);
-
-                fBarrier.BStepBy(pers);
-                sBarrier.BStepBy(pers);
-                tBarrier.BStepBy(pers);
-                foBarrier.BStepBy(pers);
-                fiBarrier.BStepBy(pers);
 
                 pers.SaveLastPosition();
             }
