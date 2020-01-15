@@ -41,7 +41,7 @@ namespace OOPFirst
             {
                 pers.Draw();
 
-                
+                mines.DrawMines();
 
                 winningPoint.Draw();
 
@@ -49,8 +49,6 @@ namespace OOPFirst
 
                 Console.SetCursorPosition(0, 21);
                 pers.Info();
-
-                mines.DrawMines();
 
                 ConsoleKey act = Console.ReadKey().Key;
                 pers.ClearAdditionalStatus();

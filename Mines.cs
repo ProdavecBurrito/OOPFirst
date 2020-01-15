@@ -11,7 +11,7 @@ namespace OOPFirst
         public int mineActiv = 0;
         int x;
         int y;
-        char sym = 'm';
+        char sym = 'ь';
 
         List<Mines> pList;
 
