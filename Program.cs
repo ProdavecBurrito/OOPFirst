@@ -18,6 +18,9 @@ namespace OOPFirst
             newMap = map.MapReader();
             map.MapWriter(newMap);
 
+            Barriers barriers = new Barriers();
+
+
             Mines mines = new Mines(12);
 
             HealingElixir fElixir = new HealingElixir(5, 10, 'N');
@@ -35,7 +38,6 @@ namespace OOPFirst
             fElixir.Draw();
             sElixir.Draw();
 
-            map.DrawBarriers();
 
             while (pers.Alive() && winningPoint.ReachBy(pers) != true)
             {
@@ -65,7 +67,7 @@ namespace OOPFirst
                 fElixir.GrabBy(pers);
                 sElixir.GrabBy(pers);
 
-                map.StepBy(pers);
+                barriers.StepBy(pers);
 
                 mines.StepBy(pers);
 

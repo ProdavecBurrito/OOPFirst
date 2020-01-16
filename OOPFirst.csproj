@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barriers.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="HealingElixir.cs" />
     <Compile Include="Map.cs" />

@@ -13,13 +13,11 @@ namespace OOPFirst
         public int MapHight = 20;
         public char[,] map;
 
-        List<Point> barrierList;
-
+        public List<Point> barrierList;
         public char[,] MapReader()
         {
             using (var readMap = new StreamReader(@"C:\Users\shipo\source\repos\OOPFirst\Map.txt"))
             {
-                barrierList = new List<Point>();
                 int i = 0;
                 map = new char[MapHight, MapWidth];
                 while (!readMap.EndOfStream)
@@ -28,11 +26,6 @@ namespace OOPFirst
                     for (int j = 0; j < mapRow.Length; ++j)
                     {
                         map[i, j] = mapRow[j];
-                        if (map[i, j] == '#')
-                        {
-                            Point p = new Point(j, i, '#');
-                            barrierList.Add(p);
-                        }
                     }
                     i++;
                 }
@@ -52,36 +45,28 @@ namespace OOPFirst
             }
         }
 
-        // Функционал барьеров
-
-        /// <summary>
-        /// Проверка, не наступил ли перс на препятствие
-        /// </summary>
-        /// <param name="character">Имя персонажа</param>
-        /// <returns></returns>dd
-        public bool StepBy(Character character)
+        public List<Point> GetBarriers()
         {
-            for (int i = 0; i < barrierList.Count; i++)
+            using (var readMap = new StreamReader(@"C:\Users\shipo\source\repos\OOPFirst\Map.txt"))
             {
-                if (character.x == barrierList[i].x && character.y == barrierList[i].y)
+                barrierList = new List<Point>();
+                int i = 0;
+                map = new char[MapHight, MapWidth];
+                while (!readMap.EndOfStream)
                 {
-                    character.Dmg();
-                    character.WriteAdditionalStatus("Вы наступили на препятствие");
-                    character.ReturnLastPosition();
-                    character.Draw();
-                    barrierList[i].sym = '#';
-                    barrierList[i].Draw();
-                    return true;
+                    string mapRow = readMap.ReadLine();
+                    for (int j = 0; j < mapRow.Length; ++j)
+                    {
+                        map[i, j] = mapRow[j];
+                        if (map[i, j] == '#')
+                        {
+                            Point barr = new Point(j, i);
+                            barrierList.Add(barr);
+                        }
+                    }
+                    i++;
                 }
-            }
-            return false;
-        }
-
-        public void DrawBarriers()
-        {
-            foreach (Point i in barrierList)
-            {
-                i.Draw();
+                return barrierList;
             }
         }
     }
