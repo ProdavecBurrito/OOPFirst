@@ -81,37 +81,13 @@ namespace OOPFirst
         /// </summary>
         public void ClearInfo()
         {
-            char[] empty = new char[writeName.Length];
-            for (int i = 0; i < writeName.Length - 1; i++)
-            {
-                empty[i] = ' ';
-            }
-            empty.ToString();
-            Console.WriteLine(empty);
+            ClearLine(writeName);
 
-            empty = new char[writeCoord.Length];
-            for (int i = 0; i < writeCoord.Length - 1; i++)
-            {
-                empty[i] = ' ';
-            }
-            empty.ToString();
-            Console.WriteLine(empty);
+            ClearLine(writeCoord);
 
-            empty = new char[writeHealth.Length];
-            for (int i = 0; i < writeHealth.Length - 1; i++)
-            {
-                empty[i] = ' ';
-            }
-            empty.ToString();
-            Console.WriteLine(empty);
+            ClearLine(writeHealth);
 
-            empty = new char[writeHealingEl.Length];
-            for (int i = 0; i < writeHealingEl.Length - 1; i++)
-            {
-                empty[i] = ' ';
-            }
-            empty.ToString();
-            Console.WriteLine(empty);
+            ClearLine(writeHealingEl);
         }
 
         /// <summary>
@@ -309,6 +285,21 @@ namespace OOPFirst
             ClearAdditionalStatus();
             Console.SetCursorPosition(52, 2);
             Console.WriteLine($"{status}");
+        }
+
+        /// <summary>
+        /// Чистит предложение
+        /// </summary>
+        /// <param name="word"></param>
+        public void ClearLine(string word)
+        {
+            char[] empty = new char[word.Length];
+            for (int i = 0; i < word.Length - 1; i++)
+            {
+                empty[i] = ' ';
+            }
+            empty.ToString();
+            Console.WriteLine(empty);
         }
     }
 }

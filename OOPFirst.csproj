@@ -43,14 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Barrier.cs" />
-    <Compile Include="Barriers.cs" />
     <Compile Include="Character.cs" />
-    <Compile Include="Direction.cs" />
     <Compile Include="HealingElixir.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Mines.cs" />
-    <Compile Include="Object.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
