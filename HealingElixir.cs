@@ -8,16 +8,30 @@ namespace OOPFirst
 {
     class HealingElixir
     {
+        Messages message = new Messages();
         public int healActiv = 0;
 
         int x;
         int y;
-        char sym;
-        public HealingElixir(int _x, int _y, char _sym)
+        char sym = 'H';
+        public HealingElixir(int _number)
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
+            Random rand = new Random();
+            List<HealingElixir> hList = new List<HealingElixir>(_number);
+            for (int i = 0; i < _number; i++)
+            {
+                x = rand.Next(1, 48);
+                y = rand.Next(1, 18);
+                Point p = new Point(x, y);
+                HealingElixir m = new HealingElixir(p);
+                hList.Add(m);
+            }
+        }
+
+        public HealingElixir(Point p)
+        {
+            x = p.x;
+            y = p.y;
         }
 
         /// <summary>
@@ -25,16 +39,19 @@ namespace OOPFirst
         /// </summary>
         /// <param name="character"></param>
         /// <returns></returns>
-        public bool GrabBy(Character character)
+        public bool GrabBy(Character character, List<HealingElixir> healings)
         {
-            if (character.x == x && character.y == y)
+            for (int i = 0; i < healings.Count; i++)
             {
-                if (ElixirActiv())
+                if (character.x == healings[i].x && character.y == healings[i].y)
                 {
-                    character.healingElixirs += 1;
-                    character.WriteAdditionalStatus("Вы подобрали хилку");
-                    healActiv = 1;
-                    return true;
+                    if (healings[i].ElixirActiv())
+                    {
+                        character.healingElixirs += 1;
+                        message.WriteAdditionalStatus("Вы подобрали хилку");
+                        healActiv = 1;
+                        return true;
+                    }
                 }
             }
             return false;
@@ -55,6 +72,14 @@ namespace OOPFirst
                 return false;
             }
         }
+        public void DrawHealings(List<HealingElixir> healings)
+        {
+            foreach (HealingElixir i in healings)
+            {
+                i.Draw();
+            }
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);

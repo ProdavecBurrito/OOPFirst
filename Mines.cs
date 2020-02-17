@@ -8,10 +8,11 @@ namespace OOPFirst
 {
     class Mines
     {
+        Messages message = new Messages();
         public int mineActiv = 0;
         int x;
         int y;
-        char sym = 'ь';
+        char sym = ' ';
 
         List<Mines> pList;
 
@@ -59,7 +60,7 @@ namespace OOPFirst
                     if (pList[i].MineActiv())
                     {
                         character.Dmg();
-                        character.WriteAdditionalStatus("Вы наступили на мину");
+                        message.WriteAdditionalStatus("Вы наступили на мину");
                         pList[i].mineActiv = 1;
                         pList[i].sym = 'M';
                         return true;

@@ -46,6 +46,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="HealingElixir.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Mines.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />

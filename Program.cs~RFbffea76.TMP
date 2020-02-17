@@ -62,7 +62,7 @@ namespace OOPFirst
 
                 pers.WriteSym();
 
-                healingElixirs.GrabBy(pers, healingElixirs);
+                healingElixirs.GrabBy(pers);
 
                 map.StepBy(pers);
 
