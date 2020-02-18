@@ -13,22 +13,21 @@ namespace OOPFirst
         int x;
         int y;
         char sym = ' ';
-
-        List<Mines> pList;
-
         Random rand;
+
+        List<Mines> mList;
 
         public Mines (int _number)
         {
             rand = new Random();
-            pList = new List<Mines>(_number);
+            mList = new List<Mines>(_number);
             for (int i = 0; i < _number; i++)
             {
                 x = rand.Next(1,48);
                 y = rand.Next(1,18);
                 Point p = new Point(x, y);
                 Mines m = new Mines(p);
-                pList.Add(m);
+                mList.Add(m);
             }
         }
 
@@ -40,7 +39,7 @@ namespace OOPFirst
 
         public void DrawMines()
         {
-            foreach (Mines i in pList)
+            foreach (Mines i in mList)
             {
                 i.Draw();
             }
@@ -53,16 +52,16 @@ namespace OOPFirst
         /// <returns></returns>
         public bool StepBy(Character character)
         {
-            for (int i = 0; i < pList.Count; i++)
+            for (int i = 0; i < mList.Count; i++)
             {
-                if (character.x == pList[i].x && character.y == pList[i].y)
+                if (character.x == mList[i].x && character.y == mList[i].y)
                 {
-                    if (pList[i].MineActiv())
+                    if (mList[i].MineActiv())
                     {
                         character.Dmg();
                         message.WriteAdditionalStatus("Вы наступили на мину");
-                        pList[i].mineActiv = 1;
-                        pList[i].sym = 'M';
+                        mList[i].mineActiv = 1;
+                        mList[i].sym = 'M';
                         return true;
                     }
                 }

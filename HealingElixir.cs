@@ -8,16 +8,19 @@ namespace OOPFirst
 {
     class HealingElixir
     {
+        List<HealingElixir> hList;
+
         Messages message = new Messages();
         public int healActiv = 0;
+        Random rand;
 
         int x;
         int y;
         char sym = 'H';
         public HealingElixir(int _number)
         {
-            Random rand = new Random();
-            List<HealingElixir> hList = new List<HealingElixir>(_number);
+            rand = new Random();
+            hList = new List<HealingElixir>(_number);
             for (int i = 0; i < _number; i++)
             {
                 x = rand.Next(1, 48);
@@ -39,17 +42,18 @@ namespace OOPFirst
         /// </summary>
         /// <param name="character"></param>
         /// <returns></returns>
-        public bool GrabBy(Character character, List<HealingElixir> healings)
+        public bool GrabBy(Character character)
         {
-            for (int i = 0; i < healings.Count; i++)
+            for (int i = 0; i < hList.Count; i++)
             {
-                if (character.x == healings[i].x && character.y == healings[i].y)
+                if (character.x == hList[i].x && character.y == hList[i].y)
                 {
-                    if (healings[i].ElixirActiv())
+                    if (hList[i].ElixirActiv())
                     {
                         character.healingElixirs += 1;
                         message.WriteAdditionalStatus("Вы подобрали хилку");
-                        healActiv = 1;
+                        hList[i].healActiv = 1;
+                        hList[i].sym = ' ';
                         return true;
                     }
                 }
@@ -72,9 +76,9 @@ namespace OOPFirst
                 return false;
             }
         }
-        public void DrawHealings(List<HealingElixir> healings)
+        public void DrawHealings()
         {
-            foreach (HealingElixir i in healings)
+            foreach (HealingElixir i in hList)
             {
                 i.Draw();
             }

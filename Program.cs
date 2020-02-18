@@ -22,7 +22,7 @@ namespace OOPFirst
 
             Mines mines = new Mines(12);
 
-            HealingElixir healingElixirs = new HealingElixir(5);
+            HealingElixir healingElixirs = new HealingElixir(4);
 
             Point p = new Point(4, 8, '*');
             Character pers = new Character(p);
@@ -41,9 +41,11 @@ namespace OOPFirst
             {
                 pers.Draw();
 
+                winningPoint.Draw();
+
                 mines.DrawMines();
 
-                winningPoint.Draw();
+                healingElixirs.DrawHealings();
 
                 pers.SaveLastPosition();
 
@@ -62,7 +64,7 @@ namespace OOPFirst
 
                 pers.WriteSym();
 
-                healingElixirs.GrabBy(pers, healingElixirs);
+                healingElixirs.GrabBy(pers);
 
                 map.StepBy(pers);
 
