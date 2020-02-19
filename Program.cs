@@ -28,7 +28,7 @@ namespace OOPFirst
             Character pers = new Character(p);
 
             Point winP = new Point(48, 18, '%');
-            WinningPoint winningPoint = new WinningPoint(winP);
+            WinningPoint winningPoint = new WinningPoint(48, 18, '%');
 
             pers.SetHealth(8);
             pers.SetName("Hodr");

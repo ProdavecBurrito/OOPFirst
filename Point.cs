@@ -25,6 +25,11 @@ namespace OOPFirst
             y = _y;
         }
 
+        public Point ()
+        {
+
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);

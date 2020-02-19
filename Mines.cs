@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace OOPFirst
 {
@@ -15,26 +16,29 @@ namespace OOPFirst
         char sym = ' ';
         Random rand;
 
+
         List<Mines> mList;
 
+        // По сути - конструктор точно такой же как и у хилки. 
+        // Тут я решил все таки у тебя спросить - так норм, или все таки копипаста и по хорошему, надо создавать абстрактный класс и его наследовать хилке и мине?
         public Mines (int _number)
         {
             rand = new Random();
             mList = new List<Mines>(_number);
             for (int i = 0; i < _number; i++)
             {
-                x = rand.Next(1,48);
-                y = rand.Next(1,18);
-                Point p = new Point(x, y);
-                Mines m = new Mines(p);
+                Thread.Sleep(1);
+                x = rand.Next(1, 49);
+                y = rand.Next(1, 19);
+                Mines m = new Mines(x, y);
                 mList.Add(m);
             }
         }
 
-        public Mines(Point p)
+        public Mines(int _x, int _y)
         {
-            x = p.x;
-            y = p.y;
+            x = _x;
+            y = _y;
         }
 
         public void DrawMines()

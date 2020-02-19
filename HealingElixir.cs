@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,18 +24,18 @@ namespace OOPFirst
             hList = new List<HealingElixir>(_number);
             for (int i = 0; i < _number; i++)
             {
-                x = rand.Next(1, 48);
-                y = rand.Next(1, 18);
-                Point p = new Point(x, y);
-                HealingElixir m = new HealingElixir(p);
+                Thread.Sleep(1);
+                x = rand.Next(1, 49);
+                y = rand.Next(1, 19);
+                HealingElixir m = new HealingElixir(x, y);
                 hList.Add(m);
             }
         }
 
-        public HealingElixir(Point p)
+        public HealingElixir(int _x, int _y)
         {
-            x = p.x;
-            y = p.y;
+            x = _x;
+            y = _y;
         }
 
         /// <summary>
