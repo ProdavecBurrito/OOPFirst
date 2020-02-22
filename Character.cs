@@ -131,7 +131,7 @@ namespace OOPFirst
         }
 
         /// <summary>
-        /// Чистит символ, а затем выводит пробел
+        /// Чистит символ
         /// </summary>
         public void Clear()
         {

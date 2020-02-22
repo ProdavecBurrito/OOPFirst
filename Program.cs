@@ -22,6 +22,8 @@ namespace OOPFirst
 
             Mines mines = new Mines(12);
 
+            Enemy enemis = new Enemy(3);
+
             HealingElixir healingElixirs = new HealingElixir(4);
 
             Point p = new Point(4, 8, '*');
@@ -45,6 +47,8 @@ namespace OOPFirst
 
                 mines.DrawMines();
 
+                enemis.DrawEnemies();
+
                 healingElixirs.DrawHealings();
 
                 pers.SaveLastPosition();
@@ -54,13 +58,18 @@ namespace OOPFirst
 
                 ConsoleKey act = Console.ReadKey().Key;
                 message.ClearAdditionalStatus();
-
+                enemis.ClearEnemis();
                 Console.SetCursorPosition(0, 21);
                 message.ClearInfo(pers);
 
+                
                 pers.Clear();
 
+                enemis.MoveToChar(pers);
                 pers.Action(act);
+                
+
+                enemis.WriteSym();
 
                 pers.WriteSym();
 
