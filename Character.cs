@@ -12,6 +12,7 @@ namespace OOPFirst
         public int x;
         public int y;
         char sym;
+        Map map = new Map();
 
         public int healingElixirs = 0;
 
@@ -25,7 +26,6 @@ namespace OOPFirst
         public string writeHealingEl;
         public int health { get; private set; }
         char saveSym;
-        Map map = new Map();
 
         public int actinosCounter;
 
@@ -35,6 +35,7 @@ namespace OOPFirst
             y = p.y;
             sym = p.sym;
             saveSym = p.sym;
+            map.MapReader();
         }
 
         /// <summary>
@@ -71,29 +72,73 @@ namespace OOPFirst
                 case ConsoleKey.W:
                     if (y != 1)
                     {
-                        y -= 1;
-                       message.WriteStatus("Вы пошли вверх");
+                        for (int i = 0; i < map.barrierList.Count; i++)
+                        {
+                            if (y - 1 == map.barrierList[i].y && x == map.barrierList[i].x)
+                            {
+                                GetDmg();
+                                break;
+                            }
+                            else if (i == map.barrierList.Count - 1)
+                            {
+                                y--;
+                                message.WriteStatus("Вы пошли наверх");
+                            }
+                        }
                     }
                     break;
                 case ConsoleKey.S:
                     if (y != map.MapHight - 2)
                     {
-                        y += 1;
-                       message.WriteStatus("Вы пошли вниз");
+                        for (int i = 0; i < map.barrierList.Count; i++)
+                        {
+                            if (y + 1 == map.barrierList[i].y && x == map.barrierList[i].x)
+                            {
+                                GetDmg();
+                                break;
+                            }
+                            else if (i == map.barrierList.Count - 1)
+                            {
+                                y += 1;
+                                message.WriteStatus("Вы пошли вниз");
+                            }
+                        }
                     }
                     break;
                 case ConsoleKey.D:
                     if (x != map.MapWidth - 2)
                     {
-                        x += 1;
-                       message.WriteStatus("Вы пошли направо");
+                        for (int i = 0; i < map.barrierList.Count; i++)
+                        {
+                            if (x + 1 == map.barrierList[i].x && y == map.barrierList[i].y)
+                            {
+                                GetDmg();
+                                break;
+                            }
+                            else if (i == map.barrierList.Count - 1)
+                            {
+                                x += 1;
+                                message.WriteStatus("Вы пошли направо");
+                            }
+                        }
                     }
                     break;
                 case ConsoleKey.A:
                     if (x != 0 + 1)
                     {
-                        x -= 1;
-                       message.WriteStatus("Вы пошли налево");
+                        for (int i = 0; i < map.barrierList.Count; i++)
+                        {
+                            if (x - 1 == map.barrierList[i].x && y == map.barrierList[i].y)
+                            {
+                                GetDmg();
+                                break;
+                            }
+                            else if (i == map.barrierList.Count - 1)
+                            {
+                                x -= 1;
+                                message.WriteStatus("Вы пошли налево");
+                            }
+                        }
                     }
                     break;
                 case ConsoleKey.Backspace:
@@ -188,6 +233,12 @@ namespace OOPFirst
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
+        }
+
+        void GetDmg()
+        {
+            Dmg();
+            message.WriteAdditionalStatus("Вы наступили на препятствие");
         }
     }
 }

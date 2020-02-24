@@ -14,7 +14,7 @@ namespace OOPFirst
         public int MapHight = 20;
         public char[,] map;
 
-        List<Point> barrierList;
+        public List<Point> barrierList;
 
         public char[,] MapReader()
         {
@@ -77,6 +77,7 @@ namespace OOPFirst
             }
             return false;
         }
+
 
         public void DrawBarriers()
         {

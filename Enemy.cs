@@ -15,6 +15,9 @@ namespace OOPFirst
         char saveSym = '2';
         List<Enemy> enemies;
         Random rand;
+
+        Map map = new Map();
+        
         public Enemy (int number)
         {
             rand = new Random();
@@ -26,7 +29,7 @@ namespace OOPFirst
                 y = rand.Next(1, 19);
                 Enemy m = new Enemy(x, y);
                 enemies.Add(m);
-            }
+            } 
         }
 
         public Enemy (int _x, int _y)
@@ -36,11 +39,12 @@ namespace OOPFirst
         }
 
         /// <summary>
-        /// Логика преследования перса
+        /// Логика преследования
         /// </summary>
         /// <param name="pers"></param>
         public void MoveToChar(Character pers)
         {
+            map.MapReader();
             for (int i = 0; i < enemies.Count; i++)
             {
                 if (enemies[i].x != pers.x || enemies[i].y != pers.y)
@@ -53,7 +57,18 @@ namespace OOPFirst
                         }
                         if (enemies[i].y < pers.y)
                         {
-                            enemies[i].y++;
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].y + 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
+                                {
+                                    if (enemies[i].x + 1 != map.barrierList[j].x)
+                                    {
+                                        enemies[i].x++;
+                                    }
+                                }
+                            }
+                            //if (enemies[i].y + 1 == map.barrierList[])
+                            //enemies[i].y++;
                         }
                     }
                     else if (enemies[i].y == pers.y && enemies[i].x != pers.x)

@@ -22,7 +22,7 @@ namespace OOPFirst
 
             Mines mines = new Mines(12);
 
-            Enemy enemis = new Enemy(3);
+            Enemy enemis = new Enemy(0);
 
             HealingElixir healingElixirs = new HealingElixir(4);
 
@@ -58,11 +58,11 @@ namespace OOPFirst
 
                 ConsoleKey act = Console.ReadKey().Key;
                 message.ClearAdditionalStatus();
-                enemis.ClearEnemis();
+
                 Console.SetCursorPosition(0, 21);
                 message.ClearInfo(pers);
 
-                
+                enemis.ClearEnemis();
                 pers.Clear();
 
                 enemis.MoveToChar(pers);
@@ -75,7 +75,7 @@ namespace OOPFirst
 
                 healingElixirs.GrabBy(pers);
 
-                map.StepBy(pers);
+                //map.StepBy(pers);
 
                 mines.StepBy(pers);
 
