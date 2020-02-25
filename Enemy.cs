@@ -11,6 +11,7 @@ namespace OOPFirst
     {
         int x;
         int y;
+        int count = 1;
         char sym = '2';
         char saveSym = '2';
         List<Enemy> enemies;
@@ -20,6 +21,7 @@ namespace OOPFirst
         
         public Enemy (int number)
         {
+            map.MapReader();
             rand = new Random();
             enemies = new List<Enemy>(number);
             for (int i = 0; i < number; i++)
@@ -29,7 +31,7 @@ namespace OOPFirst
                 y = rand.Next(1, 19);
                 Enemy m = new Enemy(x, y);
                 enemies.Add(m);
-            } 
+            }
         }
 
         public Enemy (int _x, int _y)
@@ -42,9 +44,8 @@ namespace OOPFirst
         /// Логика преследования
         /// </summary>
         /// <param name="pers"></param>
-        public void MoveToChar(Character pers)
+        public void MoveToChar(Character pers) // Это одеяло из if-ов конечно напрягает, но как по другому сделать - я хз, если честно
         {
-            map.MapReader();
             for (int i = 0; i < enemies.Count; i++)
             {
                 if (enemies[i].x != pers.x || enemies[i].y != pers.y)
@@ -53,22 +54,25 @@ namespace OOPFirst
                     {
                         if (enemies[i].y > pers.y)
                         {
-                            enemies[i].y--;
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].y - 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
+                                {
+                                    while (enemies[i].y -1 == map.barrierList[j].y && enemies[i].x + count == map.barrierList[j].x 
+                                          || enemies[i].y - 1 == map.barrierList[j].y && enemies[i].x - count == map.barrierList[j].x)
+                                    {
+                                        count++;
+                                    }
+                                }
+                                else if (j == map.barrierList.Count - 1)
+                                {
+                                    enemies[i].y--;
+                                }
+                            }
                         }
                         if (enemies[i].y < pers.y)
                         {
-                            for (int j = 0; j < map.barrierList.Count; j++)
-                            {
-                                if (enemies[i].y + 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
-                                {
-                                    if (enemies[i].x + 1 != map.barrierList[j].x)
-                                    {
-                                        enemies[i].x++;
-                                    }
-                                }
-                            }
-                            //if (enemies[i].y + 1 == map.barrierList[])
-                            //enemies[i].y++;
+                            enemies[i].x++;
                         }
                     }
                     else if (enemies[i].y == pers.y && enemies[i].x != pers.x)

@@ -79,7 +79,7 @@ namespace OOPFirst
                                 GetDmg();
                                 break;
                             }
-                            else if (i == map.barrierList.Count - 1)
+                            else if (i == map.barrierList.Count - 1 && y - 1 != map.barrierList[i].y)
                             {
                                 y--;
                                 message.WriteStatus("Вы пошли наверх");

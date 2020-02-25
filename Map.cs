@@ -53,32 +53,9 @@ namespace OOPFirst
             }
         }
 
-        // Функционал барьеров
-
         /// <summary>
-        /// Проверка, не наступил ли перс на препятствие
+        /// Вывод барьеров
         /// </summary>
-        /// <param name="character">Имя персонажа</param>
-        /// <returns></returns>dd
-        public bool StepBy(Character character)
-        {
-            for (int i = 0; i < barrierList.Count; i++)
-            {
-                if (character.x == barrierList[i].x && character.y == barrierList[i].y)
-                {
-                    character.Dmg();
-                    message.WriteAdditionalStatus("Вы наступили на препятствие");
-                    character.ReturnLastPosition();
-                    character.Draw();
-                    barrierList[i].sym = '#';
-                    barrierList[i].Draw();
-                    return true;
-                }
-            }
-            return false;
-        }
-
-
         public void DrawBarriers()
         {
             foreach (Point i in barrierList)
