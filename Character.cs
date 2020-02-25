@@ -18,13 +18,13 @@ namespace OOPFirst
 
         int saveX;
         int saveY;
-        public string name { get; private set; }
+        public string name;
 
         public string writeName;
         public string writeCoord;
         public string writeHealth;
         public string writeHealingEl;
-        public int health { get; private set; }
+        public int health;
         char saveSym;
 
         public int actinosCounter;

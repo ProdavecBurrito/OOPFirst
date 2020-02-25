@@ -13,7 +13,6 @@ namespace OOPFirst
         int _x;
         int y;
         int _y;
-        int count = 0;
         char sym = '2';
         char saveSym = '2';
         List<Enemy> enemies;
@@ -141,7 +140,6 @@ namespace OOPFirst
                                     enemies[i].y++;
                                 }
                             }
-                            enemies[i].y++;
                         }
                     }
                 }
