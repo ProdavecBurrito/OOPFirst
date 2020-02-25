@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,15 @@ namespace OOPFirst
 {
     class Messages
     {
-
+        delegate void Mes(string txt);
+        Mes mes = Console.WriteLine;
         /// <summary>
         /// Выводит победное сообщение
         /// </summary>
         public void WinningMessege(Character character)
         {
             Console.Clear();
-            Console.WriteLine($"Поздравляем, Вы победили! Вы прошли за {character.actinosCounter} ход(ов)");
+            mes($"Поздравляем, Вы победили! Вы прошли за {character.actinosCounter} ход(ов)");
             Console.WriteLine();
             Info(character);
             Console.ReadKey();
@@ -28,7 +30,7 @@ namespace OOPFirst
         public void LosingMessage(Character character)
         {
             Console.Clear();
-            Console.WriteLine($"Вы погибли. Сделанно {character.actinosCounter} ход(ов)");
+            mes($"Вы погибли. Сделанно {character.actinosCounter} ход(ов)");
             Console.WriteLine();
             Info(character);
             Console.ReadKey();
@@ -37,7 +39,7 @@ namespace OOPFirst
         public void ClearStatus()
         {
             Console.SetCursorPosition(52, 1);
-            Console.WriteLine("                             ");
+            mes("                             ");
         }
 
         /// <summary>
@@ -46,7 +48,7 @@ namespace OOPFirst
         public void ClearAdditionalStatus()
         {
             Console.SetCursorPosition(52, 2);
-            Console.WriteLine("                             ");
+            mes("                             ");
         }
 
         /// <summary>
@@ -109,16 +111,16 @@ namespace OOPFirst
         public void Info(Character character)
         {
             character.writeName = ($"Персонаж {character.name}");
-            Console.WriteLine(character.writeName);
+            mes(character.writeName);
 
             character.writeCoord = ($"Координаты {character.x}х{character.y}");
-            Console.WriteLine(character.writeCoord);
+            mes(character.writeCoord);
 
             character.writeHealth = ($"Колл-во жизней {character.health}");
-            Console.WriteLine(character.writeHealth);
+            mes(character.writeHealth);
 
             character.writeHealingEl = ($"Колл-во хилок {character.healingElixirs}");
-            Console.WriteLine(character.writeHealingEl);
+            mes(character.writeHealingEl);
         }
     }
 }

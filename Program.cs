@@ -20,14 +20,14 @@ namespace OOPFirst
             newMap = map.MapReader();
             map.MapWriter(newMap);
 
+            Point p = new Point(4, 8, '*');
+            Character pers = new Character(p);
+
             Mines mines = new Mines(12);
 
             Enemy enemis = new Enemy(1);
 
             HealingElixir healingElixirs = new HealingElixir(4);
-
-            Point p = new Point(4, 8, '*');
-            Character pers = new Character(p);
 
             Point winP = new Point(48, 18, '%');
             WinningPoint winningPoint = new WinningPoint(48, 18, '%');

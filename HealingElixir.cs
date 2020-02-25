@@ -10,23 +10,52 @@ namespace OOPFirst
     class HealingElixir
     {
         List<HealingElixir> hList;
-
+        Map map = new Map();
         Messages message = new Messages();
         public int healActiv = 0;
         Random rand;
 
         int x;
+        int _x;
         int y;
+        int _y;
         char sym = 'H';
         public HealingElixir(int _number)
         {
+            map.MapReader();
             rand = new Random();
             hList = new List<HealingElixir>(_number);
             for (int i = 0; i < _number; i++)
             {
                 Thread.Sleep(1);
-                x = rand.Next(1, 49);
-                y = rand.Next(1, 19);
+                _x = rand.Next(1, 49);
+                for (int j = 0; j < map.barrierList.Count; j++)
+                {
+                    if (_x == map.barrierList[j].x)
+                    {
+                        Thread.Sleep(1);
+                        j = 0;
+                        _x = rand.Next(1, 49);
+                    }
+                    else if (j == map.barrierList.Count - 1 && _x != map.barrierList[j].x)
+                    {
+                        x = _x;
+                    }
+                }
+                _y = rand.Next(1, 19);
+                for (int j = 0; j < map.barrierList.Count; j++)
+                {
+                    if (_y == map.barrierList[j].y)
+                    {
+                        Thread.Sleep(1);
+                        j = 0;
+                        _y = rand.Next(1, 19);
+                    }
+                    if (j == map.barrierList.Count - 1 && _y != map.barrierList[j].y)
+                    {
+                        y = _y;
+                    }
+                }
                 HealingElixir m = new HealingElixir(x, y);
                 hList.Add(m);
             }

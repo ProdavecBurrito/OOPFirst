@@ -10,8 +10,10 @@ namespace OOPFirst
     class Enemy
     {
         int x;
+        int _x;
         int y;
-        int count = 1;
+        int _y;
+        int count = 0;
         char sym = '2';
         char saveSym = '2';
         List<Enemy> enemies;
@@ -27,8 +29,34 @@ namespace OOPFirst
             for (int i = 0; i < number; i++)
             {
                 Thread.Sleep(1);
-                x = rand.Next(1, 49);
-                y = rand.Next(1, 19);
+                _x = rand.Next(1, 49);
+                for (int j = 0; j < map.barrierList.Count; j++)
+                {
+                    if (_x == map.barrierList[j].x )
+                    {
+                        Thread.Sleep(1);
+                        j = 0;
+                        _x = rand.Next(1, 49);
+                    }
+                    else if (j == map.barrierList.Count - 1 && _x != map.barrierList[j].x)
+                    {
+                        x = _x;
+                    }
+                }
+                _y = rand.Next(1, 19);
+                for (int j = 0; j < map.barrierList.Count; j++)
+                {
+                    if (_y == map.barrierList[j].y)
+                    {
+                        Thread.Sleep(1);
+                        j = 0;
+                        _y = rand.Next(1, 19);
+                    }
+                    else if (j == map.barrierList.Count - 1 && _y != map.barrierList[j].y)
+                    {
+                        y = _y;
+                    }
+                }
                 Enemy m = new Enemy(x, y);
                 enemies.Add(m);
             }
@@ -54,21 +82,8 @@ namespace OOPFirst
                     {
                         if (enemies[i].y > pers.y)
                         {
-                            for (int j = 0; j < map.barrierList.Count; j++)
-                            {
-                                if (enemies[i].y - 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
-                                {
-                                    while (enemies[i].y -1 == map.barrierList[j].y && enemies[i].x + count == map.barrierList[j].x 
-                                          || enemies[i].y - 1 == map.barrierList[j].y && enemies[i].x - count == map.barrierList[j].x)
-                                    {
-                                        count++;
-                                    }
-                                }
-                                else if (j == map.barrierList.Count - 1)
-                                {
-                                    enemies[i].y--;
-                                }
-                            }
+                           
+                            enemies[i].y--;
                         }
                         if (enemies[i].y < pers.y)
                         {
@@ -101,10 +116,31 @@ namespace OOPFirst
                     {
                         if (enemies[i].y > pers.y)
                         {
-                            enemies[i].y--;
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].y - 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
+                                {
+                                    enemies[i].x++;
+                                }
+                                else if(j == map.barrierList.Count - 1)
+                                {
+                                    enemies[i].y--;
+                                }
+                            }
                         }
                         else if (enemies[i].y < pers.y)
                         {
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].y + 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
+                                {
+                                    enemies[i].x++;
+                                }
+                                else if (j == map.barrierList.Count - 1)
+                                {
+                                    enemies[i].y++;
+                                }
+                            }
                             enemies[i].y++;
                         }
                     }
