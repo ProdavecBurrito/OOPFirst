@@ -9,6 +9,7 @@ namespace OOPFirst
 {
     class Map
     {
+        Messages message = new Messages();
         public int MapWidth = 50;
         public int MapHight = 20;
         public char[,] map;
@@ -66,7 +67,7 @@ namespace OOPFirst
                 if (character.x == barrierList[i].x && character.y == barrierList[i].y)
                 {
                     character.Dmg();
-                    character.WriteAdditionalStatus("Вы наступили на препятствие");
+                    message.WriteAdditionalStatus("Вы наступили на препятствие");
                     character.ReturnLastPosition();
                     character.Draw();
                     barrierList[i].sym = '#';

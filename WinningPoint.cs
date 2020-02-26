@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOPFirst
 {
-    class WinningPoint
+    class WinningPoint : Point
     {
-        int x;
-        int y;
-        char sym;
-        public WinningPoint(Point p)
+        public WinningPoint(int x, int y, char sym) : base(x, y, sym)
         {
-            x = p.x;
-            y = p.y;
-            sym = p.sym;
-        }
 
+        }
         /// <summary>
         /// Проверка, достиг ли персонаж победной точки
         /// </summary>
@@ -30,12 +24,6 @@ namespace OOPFirst
                 return true;
             }
             return false;
-        }
-
-        public void Draw()
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(sym);
         }
     }
 }

@@ -22,13 +22,13 @@ namespace OOPFirst
 
             Mines mines = new Mines(12);
 
-            HealingElixir healingElixirs = new HealingElixir(4);
+            HealingElixir healingElixirs = new HealingElixir(5);
 
             Point p = new Point(4, 8, '*');
             Character pers = new Character(p);
 
             Point winP = new Point(48, 18, '%');
-            WinningPoint winningPoint = new WinningPoint(48, 18, '%');
+            WinningPoint winningPoint = new WinningPoint(winP);
 
             pers.SetHealth(8);
             pers.SetName("Hodr");
@@ -41,11 +41,9 @@ namespace OOPFirst
             {
                 pers.Draw();
 
-                winningPoint.Draw();
-
                 mines.DrawMines();
 
-                healingElixirs.DrawHealings();
+                winningPoint.Draw();
 
                 pers.SaveLastPosition();
 

@@ -8,6 +8,7 @@ namespace OOPFirst
 {
     class Character
     {
+        Messages message = new Messages();
         public int x;
         public int y;
         char sym;
@@ -16,13 +17,13 @@ namespace OOPFirst
 
         int saveX;
         int saveY;
-        string name;
+        public string name;
 
-        string writeName;
-        string writeCoord;
-        string writeHealth;
-        string writeHealingEl;
-        int health;
+        public string writeName;
+        public string writeCoord;
+        public string writeHealth;
+        public string writeHealingEl;
+        public int health;
         char saveSym;
         Map map = new Map();
 
@@ -59,38 +60,6 @@ namespace OOPFirst
         }
 
         /// <summary>
-        /// Выводит информацию о персонаже
-        /// </summary>
-        public void Info()
-        {
-            writeName = ($"Персонаж {name}");
-            Console.WriteLine(writeName);
-
-            writeCoord = ($"Координаты {x}х{y}");
-            Console.WriteLine(writeCoord);
-
-            writeHealth = ($"Колл-во жизней {health}");
-            Console.WriteLine(writeHealth);
-
-            writeHealingEl = ($"Колл-во хилок {healingElixirs}");
-            Console.WriteLine(writeHealingEl);
-        }
-
-        /// <summary>
-        /// Чистит информацию о персонаже
-        /// </summary>
-        public void ClearInfo()
-        {
-            ClearLine(writeName);
-
-            ClearLine(writeCoord);
-
-            ClearLine(writeHealth);
-
-            ClearLine(writeHealingEl);
-        }
-
-        /// <summary>
         /// Заставляет перса совершить действия
         /// </summary>
         /// <param name="key">Клавиша действия</param>
@@ -103,28 +72,28 @@ namespace OOPFirst
                     if (y != 1)
                     {
                         y -= 1;
-                        WriteStatus("Вы пошли вверх");
+                       message.WriteStatus("Вы пошли вверх");
                     }
                     break;
                 case ConsoleKey.S:
                     if (y != map.MapHight - 2)
                     {
                         y += 1;
-                        WriteStatus("Вы пошли вниз");
+                       message.WriteStatus("Вы пошли вниз");
                     }
                     break;
                 case ConsoleKey.D:
                     if (x != map.MapWidth - 2)
                     {
                         x += 1;
-                        WriteStatus("Вы пошли направо");
+                       message.WriteStatus("Вы пошли направо");
                     }
                     break;
                 case ConsoleKey.A:
                     if (x != 0 + 1)
                     {
                         x -= 1;
-                        WriteStatus("Вы пошли налево");
+                       message.WriteStatus("Вы пошли налево");
                     }
                     break;
                 case ConsoleKey.Backspace:
@@ -132,11 +101,11 @@ namespace OOPFirst
                     {
                         healingElixirs -= 1;
                         Heal();
-                        WriteStatus("Вы использовали хилку");
+                        message.WriteStatus("Вы использовали хилку");
                     }
                     else
                     {
-                        WriteStatus("У вас нет хилки");
+                        message.WriteStatus("У вас нет хилки");
                     }
                     break;
                 case ConsoleKey.Enter:
@@ -219,87 +188,6 @@ namespace OOPFirst
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
-        }
-
-        /// <summary>
-        /// Выводит победное сообщение
-        /// </summary>
-        public void WinningMessege()
-        {
-            Console.Clear();
-            Console.WriteLine($"Поздравляем, Вы победили! Вы прошли за {actinosCounter} ход(ов)");
-            Console.WriteLine();
-            Info();
-            Console.ReadKey();
-        }
-
-        /// <summary>
-        /// Выводит сообщение проиграша
-        /// </summary>
-        public void LosingMessage()
-        {
-            Console.Clear();
-            Console.WriteLine($"Вы погибли. Сделанно {actinosCounter} ход(ов)");
-            Console.WriteLine();
-            Info();
-            Console.ReadKey();
-        }
-
-        /// <summary>
-        /// Чистит статус
-        /// </summary>
-        public void ClearStatus()
-        {
-            Console.SetCursorPosition(52, 1);
-            Console.WriteLine("                             ");
-        }
-
-        /// <summary>
-        /// Чистит дополнительный статус
-        /// </summary>
-        public void ClearAdditionalStatus()
-        {
-            Console.SetCursorPosition(52, 2);
-            Console.WriteLine("                             ");
-        }
-
-        /// <summary>
-        /// Выводит статус
-        /// </summary>
-        /// <param name="status"></param>
-        public void WriteStatus(string status)
-        {
-            Console.SetCursorPosition(52, 1);
-            ClearStatus();
-            Console.SetCursorPosition(52, 1);
-            Console.WriteLine($"{status}");
-        }
-
-        /// <summary>
-        /// Выводит дополнительный статус
-        /// </summary>
-        /// <param name="status"></param>
-        public void WriteAdditionalStatus(string status)
-        {
-            Console.SetCursorPosition(52, 2);
-            ClearAdditionalStatus();
-            Console.SetCursorPosition(52, 2);
-            Console.WriteLine($"{status}");
-        }
-
-        /// <summary>
-        /// Чистит предложение
-        /// </summary>
-        /// <param name="word"></param>
-        public void ClearLine(string word)
-        {
-            char[] empty = new char[word.Length];
-            for (int i = 0; i < word.Length - 1; i++)
-            {
-                empty[i] = ' ';
-            }
-            empty.ToString();
-            Console.WriteLine(empty);
         }
     }
 }

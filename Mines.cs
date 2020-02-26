@@ -3,43 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace OOPFirst
 {
     class Mines
     {
+        Messages message = new Messages();
         public int mineActiv = 0;
         int x;
         int y;
-        char sym = 'ь';
-
-        List<Mines> pList;
-
+        char sym = 'p';
         Random rand;
 
+
+        List<Mines> mList;
+
+        // По сути - конструктор точно такой же как и у хилки. 
+        // Тут я решил все таки у тебя спросить - так норм, или все таки копипаста и по хорошему, надо создавать абстрактный класс и его наследовать хилке и мине?
         public Mines (int _number)
         {
-            rand = new Random();
-            pList = new List<Mines>(_number);
+            rand = new Random(Guid.NewGuid().GetHashCode());
+            mList = new List<Mines>(_number);
             for (int i = 0; i < _number; i++)
             {
-                x = rand.Next(1,48);
-                y = rand.Next(1,18);
-                Point p = new Point(x, y);
-                Mines m = new Mines(p);
-                pList.Add(m);
+                x = rand.Next(1, 49);
+                y = rand.Next(1, 19);
+                Mines m = new Mines(x, y);
+                mList.Add(m);
             }
         }
 
-        public Mines(Point p)
+        public Mines(int _x, int _y)
         {
-            x = p.x;
-            y = p.y;
+            x = _x;
+            y = _y;
         }
 
         public void DrawMines()
         {
-            foreach (Mines i in pList)
+            foreach (Mines i in mList)
             {
                 i.Draw();
             }
@@ -52,16 +55,16 @@ namespace OOPFirst
         /// <returns></returns>
         public bool StepBy(Character character)
         {
-            for (int i = 0; i < pList.Count; i++)
+            for (int i = 0; i < mList.Count; i++)
             {
-                if (character.x == pList[i].x && character.y == pList[i].y)
+                if (character.x == mList[i].x && character.y == mList[i].y)
                 {
-                    if (pList[i].MineActiv())
+                    if (mList[i].MineActiv())
                     {
                         character.Dmg();
-                        character.WriteAdditionalStatus("Вы наступили на мину");
-                        pList[i].mineActiv = 1;
-                        pList[i].sym = 'M';
+                        message.WriteAdditionalStatus("Вы наступили на мину");
+                        mList[i].mineActiv = 1;
+                        mList[i].sym = 'M';
                         return true;
                     }
                 }
