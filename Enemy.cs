@@ -124,7 +124,7 @@ namespace OOPFirst
                                         }
                                     }
                                 }
-                                else if (j == map.barrierList.Count - 1)
+                                else if (j == map.barrierList.Count - 1 && enemies[i].y + 1 != map.barrierList[j].y)
                                 {
                                     enemies[i].y++;
                                 }
@@ -203,7 +203,7 @@ namespace OOPFirst
                                         }
                                     }
                                 }
-                                else if (j == map.barrierList.Count - 1)
+                                else if (j == map.barrierList.Count - 1 && enemies[i].y + 1 != map.barrierList[j].y)
                                 {
                                     enemies[i].y++;
                                 }

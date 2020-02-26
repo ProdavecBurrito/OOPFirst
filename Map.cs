@@ -13,7 +13,6 @@ namespace OOPFirst
         public int MapWidth = 50;
         public int MapHight = 20;
         public char[,] map;
-        int HealingsNum;
 
         public List<Point> barrierList;
 

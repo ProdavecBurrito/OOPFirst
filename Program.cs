@@ -43,15 +43,13 @@ namespace OOPFirst
             {
                 pers.Draw();
 
+                enemis.DrawEnemies();
+
                 winningPoint.Draw();
 
                 mines.DrawMines();
 
-                enemis.DrawEnemies();
-
                 healingElixirs.DrawHealings();
-
-                pers.SaveLastPosition();
 
                 Console.SetCursorPosition(0, 21);
                 message.Info(pers);
@@ -75,8 +73,6 @@ namespace OOPFirst
                 healingElixirs.GrabBy(pers);
 
                 mines.StepBy(pers);
-
-                pers.SaveLastPosition();
             }
             if (winningPoint.ReachBy(pers))
             {

@@ -15,9 +15,6 @@ namespace OOPFirst
         Map map = new Map();
 
         public int healingElixirs = 0;
-
-        int saveX;
-        int saveY;
         public string name;
 
         public string writeName;
@@ -209,24 +206,6 @@ namespace OOPFirst
         public void SetHealth(int _health)
         {
             health = _health;
-        }
-
-        /// <summary>
-        /// Созраняет последнюю безопасную позицию
-        /// </summary>
-        public void SaveLastPosition()
-        {
-            saveX = this.x;
-            saveY = this.y;
-        }
-
-        /// <summary>
-        /// Перемещает персонажа в последнюю безопасную позицию
-        /// </summary>
-        public void ReturnLastPosition()
-        {
-            this.x = saveX;
-            this.y = saveY;
         }
 
         public void Draw()
