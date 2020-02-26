@@ -20,11 +20,10 @@ namespace OOPFirst
         char sym = 'H';
         public HealingElixir(int _number)
         {
-            rand = new Random();
+            rand = new Random(Guid.NewGuid().GetHashCode());
             hList = new List<HealingElixir>(_number);
             for (int i = 0; i < _number; i++)
             {
-                Thread.Sleep(1);
                 x = rand.Next(1, 49);
                 y = rand.Next(1, 19);
                 HealingElixir m = new HealingElixir(x, y);
