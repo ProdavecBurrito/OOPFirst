@@ -23,17 +23,15 @@ namespace OOPFirst
         public Enemy (int number)
         {
             map.MapReader();
-            rand = new Random();
+            rand = new Random(Guid.NewGuid().GetHashCode());
             enemies = new List<Enemy>(number);
             for (int i = 0; i < number; i++)
             {
-                Thread.Sleep(1);
                 _x = rand.Next(1, 49);
                 for (int j = 0; j < map.barrierList.Count; j++)
                 {
                     if (_x == map.barrierList[j].x )
                     {
-                        Thread.Sleep(1);
                         j = 0;
                         _x = rand.Next(1, 49);
                     }
@@ -47,7 +45,6 @@ namespace OOPFirst
                 {
                     if (_y == map.barrierList[j].y)
                     {
-                        Thread.Sleep(1);
                         j = 0;
                         _y = rand.Next(1, 19);
                     }
@@ -81,12 +78,57 @@ namespace OOPFirst
                     {
                         if (enemies[i].y > pers.y)
                         {
-                           
-                            enemies[i].y--;
+                            // Логика обхода препятствий (ЛОП)
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].y - 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
+                                {
+                                    for (int l = 0; l < map.barrierList.Count; l++)
+                                    {
+                                        if (enemies[i].x < pers.x && enemies[i].x + 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x++;
+                                            break;
+                                        }
+                                        else if (enemies[i].x > pers.x && enemies[i].x - 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x--;
+                                            break;
+                                        }
+                                    }
+                                }
+                                else if (j == map.barrierList.Count - 1 && enemies[i].y - 1 != map.barrierList[j].y)
+                                {
+                                    enemies[i].y--;
+                                }
+                            }
                         }
-                        if (enemies[i].y < pers.y)
+                        else if (enemies[i].y < pers.y)
                         {
-                            enemies[i].x++;
+                            // ЛОП
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].y + 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
+                                {
+                                    for (int l = 0; l < map.barrierList.Count; l++)
+                                    {
+                                        if (enemies[i].x < pers.x && enemies[i].x + 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x++;
+                                            break;
+                                        }
+                                        else if (enemies[i].x > pers.x && enemies[i].x - 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x--;
+                                            break;
+                                        }
+                                    }
+                                }
+                                else if (j == map.barrierList.Count - 1)
+                                {
+                                    enemies[i].y++;
+                                }
+                            }
                         }
                     }
                     else if (enemies[i].y == pers.y && enemies[i].x != pers.x)
@@ -95,7 +137,7 @@ namespace OOPFirst
                         {
                             enemies[i].x--;
                         }
-                        if (enemies[i].x < pers.x)
+                        else if (enemies[i].x < pers.x)
                         {
                             enemies[i].x++;
                         }
@@ -115,13 +157,26 @@ namespace OOPFirst
                     {
                         if (enemies[i].y > pers.y)
                         {
+                            // ЛОП
                             for (int j = 0; j < map.barrierList.Count; j++)
                             {
                                 if (enemies[i].y - 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
                                 {
-                                    enemies[i].x++;
+                                    for (int l = 0; l < map.barrierList.Count; l++)
+                                    {
+                                        if (enemies[i].x < pers.x && enemies[i].x + 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x++;
+                                            break;
+                                        }
+                                        else if (enemies[i].x > pers.x && enemies[i].x - 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x--;
+                                            break;
+                                        }
+                                    }
                                 }
-                                else if(j == map.barrierList.Count - 1)
+                                else if(j == map.barrierList.Count - 1 && enemies[i].y - 1 != map.barrierList[j].y)
                                 {
                                     enemies[i].y--;
                                 }
@@ -129,11 +184,24 @@ namespace OOPFirst
                         }
                         else if (enemies[i].y < pers.y)
                         {
+                            // ЛОП
                             for (int j = 0; j < map.barrierList.Count; j++)
                             {
                                 if (enemies[i].y + 1 == map.barrierList[j].y && enemies[i].x == map.barrierList[j].x)
                                 {
-                                    enemies[i].x++;
+                                    for (int l = 0; l < map.barrierList.Count; l++)
+                                    {
+                                        if (enemies[i].x < pers.x && enemies[i].x + 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x++;
+                                            break;
+                                        }
+                                        else if (enemies[i].x > pers.x && enemies[i].x - 1 != map.barrierList[l].x)
+                                        {
+                                            enemies[i].x--;
+                                            break;
+                                        }
+                                    }
                                 }
                                 else if (j == map.barrierList.Count - 1)
                                 {

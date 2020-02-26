@@ -23,11 +23,10 @@ namespace OOPFirst
         // Тут я решил все таки у тебя спросить - так норм, или все таки копипаста и по хорошему, надо создавать абстрактный класс и его наследовать хилке и мине?
         public Mines (int _number)
         {
-            rand = new Random();
+            rand = new Random(Guid.NewGuid().GetHashCode());
             mList = new List<Mines>(_number);
             for (int i = 0; i < _number; i++)
             {
-                Thread.Sleep(1);
                 x = rand.Next(1, 49);
                 y = rand.Next(1, 19);
                 Mines m = new Mines(x, y);

@@ -154,7 +154,7 @@ namespace OOPFirst
                     }
                     break;
                 case ConsoleKey.Enter:
-                    Dmg();
+                    GetDmg();
                     break;
             }
         }
