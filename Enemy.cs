@@ -74,6 +74,7 @@ namespace OOPFirst
             {
                 if (enemies[i].x != pers.x || enemies[i].y != pers.y)
                 {
+                    // Выравнивание по оси У
                     if (enemies[i].x == pers.x && enemies[i].y != pers.y)
                     {
                         if (enemies[i].y > pers.y)
@@ -131,29 +132,76 @@ namespace OOPFirst
                             }
                         }
                     }
+                    // Выравнивание по оси Х
                     else if (enemies[i].y == pers.y && enemies[i].x != pers.x)
                     {
                         if (enemies[i].x > pers.x)
                         {
-                            enemies[i].x--;
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].x - 1 == map.barrierList[j].x && enemies[i].y == map.barrierList[j].y)
+                                {
+                                    for (int l = 0; l < map.barrierList.Count; l++)
+                                    {
+                                        if (enemies[i].y + 1 != map.barrierList[l].y && enemies[i].y < pers.y)
+                                        {
+                                            enemies[i].y++;
+                                            break;
+                                        }
+                                        else if (l == map.barrierList.Count - 1 && enemies[i].y-1 != map.barrierList[l].y)
+                                        {
+                                            enemies[i].y--;
+                                            break;
+                                        }
+                                    }
+                                }
+                                else if (j == map.barrierList.Count - 1 && enemies[i].x - 1 != map.barrierList[j].x)
+                                {
+                                    enemies[i].x--;
+                                }
+                            }
                         }
                         else if (enemies[i].x < pers.x)
                         {
                             enemies[i].x++;
                         }
                     }
+                    // Если врагу быстрее выравнится по оси Х
                     else if (enemies[i].x - pers.x < enemies[i].y - pers.y && enemies[i].x != pers.x)
                     {
                         if (enemies[i].x > pers.x)
                         {
-                            enemies[i].x--;
+                            for (int j = 0; j < map.barrierList.Count; j++)
+                            {
+                                if (enemies[i].x - 1 == map.barrierList[j].x)
+                                {
+                                    for (int l = 0; l < map.barrierList.Count; l++)
+                                    {
+                                        if (enemies[i].y + 1 != map.barrierList[l].y && enemies[i].y < pers.y)
+                                        {
+                                            enemies[i].y++;
+                                            break;
+                                        }
+                                        else if (enemies[i].y - 1 != map.barrierList[l].y && enemies[i].y > pers.y)
+                                        {
+                                            enemies[i].y--;
+                                            break;
+                                        }
+                                    }
+                                }
+                                else if (j == map.barrierList.Count - 1 && enemies[i].y - 1 != map.barrierList[j].y)
+                                {
+                                    enemies[i].x--;
+                                }
+                            }
                         }
                         else if (enemies[i].x < pers.x)
                         {
                             enemies[i].x++;
                         }
                     }
-                    else if (x - pers.x > enemies[i].y - pers.y && enemies[i].y != pers.y)
+                    // Если врагу быстрее выравнится по оси У
+                    else if (enemies[i].x - pers.x > enemies[i].y - pers.y && enemies[i].y != pers.y)
                     {
                         if (enemies[i].y > pers.y)
                         {
@@ -164,12 +212,12 @@ namespace OOPFirst
                                 {
                                     for (int l = 0; l < map.barrierList.Count; l++)
                                     {
-                                        if (enemies[i].x < pers.x && enemies[i].x + 1 != map.barrierList[l].x)
+                                        if (enemies[i].x + 1 != map.barrierList[l].x && enemies[i].x < pers.x)
                                         {
                                             enemies[i].x++;
                                             break;
                                         }
-                                        else if (enemies[i].x > pers.x && enemies[i].x - 1 != map.barrierList[l].x)
+                                        else if (enemies[i].x - 1 != map.barrierList[l].x && enemies[i].x > pers.x)
                                         {
                                             enemies[i].x--;
                                             break;
